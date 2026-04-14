@@ -204,7 +204,7 @@
     <string name="presets_save_label">Ön Ayar Adı</string>
     <string name="presets_save_success">Preset \'%1$s\' saved</string>
     <string name="presets_confirm_delete">Sil</string>
-    <string name="presets_confirm_rename">Rename</string>
+    <string name="presets_confirm_rename">Yeniden adlandır</string>
     <string name="presets_confirm_save">Kaydet</string>
     <string name="presets_confirm_cancel">Vazgeç</string>
     <string name="presets_share_subject">AxionFx Preset: %1$s</string>
