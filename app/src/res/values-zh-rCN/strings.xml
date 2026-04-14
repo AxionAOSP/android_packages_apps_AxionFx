@@ -1,0 +1,261 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     Copyright 2025-2026 AxionOS
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+<resources>
+    <string name="app_name">AxionFx</string>
+    <string name="mode_off">关</string>
+    <string name="mode_on">始终开启</string>
+    <string name="mode_media">仅限媒体</string>
+
+    <!-- 状态 -->
+    <string name="status_active">正在处理</string>
+    <string name="status_disabled">已禁用</string>
+    <string name="status_media_only">仅媒体模式</string>
+    <string name="status_effects_active">%1$d个效果生效 \u2022 %2$d%%增益</string>
+    <string name="status_tap_to_enable">点击主开关以启用</string>
+
+    <!-- 大师 -->
+    <string name="category_master">主限制器</string>
+    <string name="master_enable_title">启用 AxionFx</string>
+    <string name="master_enable_summary">全局音频处理引擎</string>
+    <string name="media_only_title">仅媒体模式</string>
+    <string name="media_only_summary">仅在媒体播放时处理音频</string>
+    <string name="output_gain_title">输出增益</string>
+    <string name="output_gain_summary">音量增强/削减</string>
+    <string name="output_pan_title">输出平衡</string>
+    <string name="output_pan_summary">左/右平衡</string>
+    <string name="limiter_threshold_title">限制器阈值</string>
+    <string name="limiter_threshold_summary">限制器上限电平</string>
+    <string name="surround_delay_title">环绕延迟</string>
+    <string name="surround_delay_summary">哈斯效应时序</string>
+    <string name="surround_width_title">环绕宽度</string>
+    <string name="surround_width_summary">交叉通道混合程度</string>
+    <string name="reset_all">全部重置</string>
+
+
+    <!-- 效果导航 -->
+    <string name="category_effects">高级效果</string>
+    <string name="nav_equalizer">均衡器</string>
+    <string name="nav_equalizer_summary">10段参量均衡器</string>
+    <string name="nav_fir_eq">FIR均衡器</string>
+    <string name="nav_fir_eq_summary">15段线性相位均衡器</string>
+    <string name="nav_multiband">多段压缩器</string>
+    <string name="nav_multiband_summary">按频率的动态范围控制</string>
+    <string name="nav_convolver">卷积器</string>
+    <string name="nav_convolver_summary">脉冲响应滤波器</string>
+    <string name="nav_presets">声音预设</string>
+    <string name="nav_presets_summary">管理和分享音频配置</string>
+
+    <!-- 低音 -->
+    <string name="category_bass">低音 &amp; 清晰度</string>
+    <string name="bass_boost_title">低音增强</string>
+    <string name="bass_boost_summary">增强低频</string>
+    <string name="bass_mode_title">低音模式</string>
+    <string name="bass_mode_natural">自然</string>
+    <string name="bass_mode_punch">冲击</string>
+    <string name="bass_mode_subwoofer">超重低音</string>
+    <string name="bass_gain_title">低音增益</string>
+    <string name="bass_gain_summary">增强量</string>
+
+    <!-- 立体声与空间音频 -->
+    <string name="category_stereo">立体声增强</string>
+    <string name="category_surround">环绕声</string>
+    <string name="category_spatial">空间音频</string>
+    <string name="widener_title">立体声展宽器</string>
+    <string name="widener_summary">扩展立体声像</string>
+    <string name="widener_width_title">宽度</string>
+    <string name="widener_width_summary">立体声宽度</string>
+    <string name="crossfeed_title">串扰</string>
+    <string name="crossfeed_summary">减轻耳机立体声听觉疲劳</string>
+    <string name="crossfeed_level_title">串扰程度</string>
+    <string name="crossfeed_level_summary">声道混合度</string>
+    <string name="surround_title">环绕</string>
+    <string name="surround_summary">哈斯效应空间增强</string>
+    <string name="spatial_title">HRTF 空间音频</string>
+    <string name="spatial_summary">Steam Audio HRTF 双耳渲染</string>
+    <string name="spatial_blend_title">空间混合度</string>
+    <string name="spatial_blend_summary">HRTF 处理强度</string>
+    <string name="spatial_hrtf_title">HRTF 配置文件</string>
+    <string name="spatial_hrtf_summary">用于空间渲染的头部模型</string>
+
+    <!-- 动力学 -->
+    <string name="category_dynamics">动态控制</string>
+    <string name="compressor_title">压缩器</string>
+    <string name="compressor_summary">单段动态范围压缩</string>
+    <string name="agc_title">自动增益控制</string>
+    <string name="agc_summary">自动音量均衡</string>
+    <string name="limiter_title">限制器</string>
+    <string name="limiter_summary">前瞻式砖墙限制器</string>
+
+    <!-- 混响与饱和度 -->
+    <string name="category_reverb">氛围 &amp; 混响</string>
+    <string name="category_saturation">温暖 &amp; 饱和</string>
+    <string name="reverb_title">混响</string>
+    <string name="reverb_summary">房间氛围模拟</string>
+    <string name="reverb_room_title">房间大小</string>
+    <string name="reverb_room_summary">混响房间尺寸</string>
+    <string name="reverb_wet_title">湿声电平</string>
+    <string name="reverb_wet_summary">混响混合比例</string>
+    <string name="tube_title">电子管模拟器</string>
+    <string name="tube_summary">温暖的模拟声特性</string>
+    <string name="tube_drive_title">驱动量</string>
+    <string name="tube_drive_summary">饱和强度</string>
+    <string name="tube_mix_title">混合</string>
+    <string name="tube_mix_summary">干湿声混合</string>
+    <string name="exciter_nav_title">激励器</string>
+    <string name="exciter_nav_summary">谐波存在感与清晰度</string>
+
+    <!-- 均衡器界面 -->
+    <string name="eq_category">参数均衡器</string>
+    <string name="eq_enable_title">启用均衡器</string>
+    <string name="eq_enable_summary">10段参数均衡器</string>
+    <string name="eq_simple">简单</string>
+    <string name="eq_advanced">高级</string>
+    <string name="eq_reset">重置</string>
+    <string name="eq_preset_flat">平坦</string>
+    <string name="eq_preset_bass_boost">低音增强</string>
+    <string name="eq_preset_treble_boost">高音增强</string>
+    <string name="eq_preset_voice">人声</string>
+    <string name="eq_preset_v_shape">V形曲线</string>
+    <string name="eq_preset_rock">摇滚</string>
+    <string name="eq_label_bass">低音</string>
+    <string name="eq_label_mid">中音</string>
+    <string name="eq_label_treble">高音</string>
+
+    <!-- FIR 均衡器界面 -->
+    <string name="fir_eq_screen_title">FIR均衡器</string>
+    <string name="fir_eq_category">线性相位均衡器</string>
+    <string name="fir_eq_enable_title">启用FIR均衡器</string>
+    <string name="fir_eq_enable_summary">15段线性相位均衡器</string>
+    <string name="fir_eq_flat">平坦</string>
+
+    <!-- 多波段界面 -->
+    <string name="mcomp_screen_title">多段压缩器</string>
+    <string name="mcomp_category">多段压缩器</string>
+    <string name="mcomp_enable_title">启用多段压缩器</string>
+    <string name="mcomp_enable_summary">按频率的动态范围控制</string>
+    <string name="mcomp_threshold_title">阈值</string>
+    <string name="mcomp_threshold_summary">压缩起始电平</string>
+    <string name="mcomp_ratio_title">比率</string>
+    <string name="mcomp_ratio_summary">压缩比</string>
+    <string name="mcomp_makeup_title">补偿增益</string>
+    <string name="mcomp_makeup_summary">压缩后增益</string>
+    <string name="mcomp_band_low">低频</string>
+    <string name="mcomp_band_low_mid">中低频</string>
+    <string name="mcomp_band_high_mid">中高频</string>
+    <string name="mcomp_band_high">高频</string>
+
+    <!-- 激励器界面 -->
+    <string name="exciter_screen_title">激励器</string>
+    <string name="exciter_category">谐波激励器</string>
+    <string name="exciter_enable_title">启用激励器</string>
+    <string name="exciter_enable_summary">增加谐波存在感与清晰度</string>
+    <string name="exciter_drive_title">驱动量</string>
+    <string name="exciter_drive_summary">谐波饱和强度</string>
+    <string name="exciter_blend_title">混合</string>
+    <string name="exciter_blend_summary">谐波混合程度</string>
+    <string name="exciter_freq_title">频率</string>
+    <string name="exciter_freq_summary">谐波生成截止频率</string>
+
+    <!-- 卷积器界面 -->
+    <string name="convolver_screen_title">卷积器</string>
+    <string name="convolver_category">脉冲响应卷积器</string>
+    <string name="convolver_enable_title">启用卷积器</string>
+    <string name="convolver_enable_summary">应用脉冲响应滤波器</string>
+    <string name="convolver_load_ir">加载IR文件</string>
+    <string name="convolver_no_ir">未加载脉冲响应</string>
+    <string name="convolver_mix_title">混合</string>
+    <string name="convolver_mix_summary">湿声/干声平衡</string>
+    <string name="convolver_formats">支持格式：WAV（16/24/32位 PCM，32位浮点）</string>
+
+    <!-- 预设界面 -->
+    <string name="presets_screen_title">声音预设</string>
+    <string name="presets_save">保存预设</string>
+    <string name="presets_empty">尚未保存任何预设</string>
+    <string name="preset_loaded">已加载：%1$s</string>
+    <string name="presets_builtin_title">快速预设</string>
+    <string name="presets_saved_title">已保存的预设</string>
+    <string name="presets_tap_to_load">点击加载设置</string>
+    <string name="presets_import">导入预设</string>
+    <string name="presets_export">导出到文件</string>
+    <string name="presets_share">分享预设</string>
+    <string name="presets_rename">重命名预设</string>
+    <string name="presets_delete">删除预设</string>
+    <string name="presets_options">预设选项</string>
+    <string name="presets_options_title">预设选项</string>
+    <string name="presets_options_message">您想要对此预设进行什么操作？</string>
+    <string name="presets_import_success">预设已导入</string>
+    <string name="presets_import_failed">导入失败：%1$s</string>
+    <string name="presets_export_success">预设已导出</string>
+    <string name="presets_export_failed">导出失败：%1$s</string>
+    <string name="presets_delete_title">删除预设</string>
+    <string name="presets_delete_message">您确定要删除“%1$s”吗？</string>
+    <string name="presets_rename_title">重命名预设</string>
+    <string name="presets_rename_label">预设名称</string>
+    <string name="presets_save_title">保存当前设置</string>
+    <string name="presets_save_label">预设名称</string>
+    <string name="presets_save_success">预设“%1$s”已保存</string>
+    <string name="presets_confirm_delete">删除</string>
+    <string name="presets_confirm_rename">重命名</string>
+    <string name="presets_confirm_save">保存</string>
+    <string name="presets_confirm_cancel">取消</string>
+    <string name="presets_share_subject">AxionFx 预设：%1$s</string>
+    <string name="presets_share_text">来看看我的自定义 AxionFx 音频预设：%1$s！</string>
+
+    <!-- 通知 -->
+    <string name="notification_channel">AxionFx 音频处理</string>
+    <string name="notification_text">音频处理已激活</string>
+    <string name="notification_title_idle">AxionFx — 待机</string>
+    <string name="notification_text_idle">等待媒体播放</string>
+
+    <!-- 电源通知 -->
+    <string name="power_notice">音频处理在播放时会增加CPU使用。请关闭未使用的效果以节省电量。</string>
+    <string name="reset_dialog_title">重置所有效果？</string>
+    <string name="reset_dialog_message">这将把所有音频效果恢复为默认设置。</string>
+    <string name="reset_confirm">重置</string>
+    <string name="reset_cancel">取消</string>
+
+    <string name="stat_sample_rate">采样率</string>
+    <string name="stat_buffer_size">缓冲区大小</string>
+    <string name="stat_channels">声道数</string>
+    <string name="stat_bit_depth">位深</string>
+    <string name="stat_session">会话</string>
+    <string name="stat_latency">延迟</string>
+    <string name="detail_placeholder">选择一个效果进行配置</string>
+
+    <string name="nav_device_profiles">设备配置文件</string>
+    <string name="nav_device_profiles_summary">为每个音频输出设置可滑动切换的预设</string>
+    <string name="device_profiles_title">设备配置文件</string>
+    <string name="device_profiles_swipe_hint">在输出设备间滑动，选择一个预设，然后点击应用</string>
+    <string name="device_profiles_unbound">未分配预设</string>
+    <string name="device_profiles_set_preset">设置预设</string>
+    <string name="device_profiles_apply">应用</string>
+    <string name="device_profiles_none_bound">请先分配一个预设</string>
+    <string name="device_profiles_pick_title">%1$s 的预设</string>
+    <string name="device_cat_speaker">手机扬声器</string>
+    <string name="device_cat_wired">有线耳机</string>
+    <string name="device_cat_bluetooth">蓝牙音频</string>
+    <string name="device_cat_usb">USB 音频</string>
+    <string name="device_cat_other">其他输出</string>
+    <string name="device_profiles_add_title">新建配置文件</string>
+    <string name="device_profiles_add_summary">创建你自己的设备配置文件，并将其绑定到任意预设</string>
+    <string name="device_profiles_add_button">添加配置文件</string>
+    <string name="device_profiles_add_label">配置文件名称</string>
+    <string name="device_profiles_add_confirm">创建</string>
+    <string name="device_profiles_add_invalid">名称无效或重复</string>
+    <string name="device_profiles_delete_title">删除配置文件？</string>
+    <string name="device_profiles_delete_message">删除“%1$s”及其预设绑定？</string>
+</resources>
