@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     Copyright 2025-2026 AxionOS
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+<resources>
+    <string name="app_name">AxionFx</string>
+    <string name="mode_off">Désactivées</string>
+    <string name="mode_on">Always On</string>
+    <string name="mode_media">Media Only</string>
+    <!-- Status -->
+    <string name="status_active">Processing Active</string>
+    <string name="status_disabled">Désactivé</string>
+    <string name="status_media_only">Media-Only Mode</string>
+    <string name="status_effects_active">%1$d effects active \u2022 %2$d%% gain</string>
+    <string name="status_tap_to_enable">Tap master switch to enable</string>
+    <!-- Master -->
+    <string name="category_master">Master Limiter</string>
+    <string name="master_enable_title">Enable AxionFx</string>
+    <string name="master_enable_summary">Global audio processing engine</string>
+    <string name="media_only_title">Media-only mode</string>
+    <string name="media_only_summary">Only process audio during media playback</string>
+    <string name="output_gain_title">Output Gain</string>
+    <string name="output_gain_summary">Volume boost/cut</string>
+    <string name="output_pan_title">Output Balance</string>
+    <string name="output_pan_summary">Left/right balance</string>
+    <string name="limiter_threshold_title">Limiter Threshold</string>
+    <string name="limiter_threshold_summary">Limiter ceiling level</string>
+    <string name="surround_delay_title">Surround Delay</string>
+    <string name="surround_delay_summary">Haas effect timing</string>
+    <string name="surround_width_title">Surround Width</string>
+    <string name="surround_width_summary">Cross-channel mix level</string>
+    <string name="reset_all">Reset All</string>
+    <!-- Effects navigation -->
+    <string name="category_effects">Advanced Effects</string>
+    <string name="nav_equalizer">Equalizer</string>
+    <string name="nav_equalizer_summary">10-band parametric equalizer</string>
+    <string name="nav_fir_eq">FIR Equalizer</string>
+    <string name="nav_fir_eq_summary">15-band phase-linear equalizer</string>
+    <string name="nav_multiband">Multiband Compressor</string>
+    <string name="nav_multiband_summary">Per-frequency dynamic range control</string>
+    <string name="nav_convolver">Convolver</string>
+    <string name="nav_convolver_summary">Impulse response filter</string>
+    <string name="nav_presets">Sound Presets</string>
+    <string name="nav_presets_summary">Manage and share audio profiles</string>
+    <string name="category_library">Presets &amp; Profiles</string>
+    <!-- Bass -->
+    <string name="category_bass">Bass &amp; Clarity</string>
+    <string name="bass_boost_title">Bass Boost</string>
+    <string name="bass_boost_summary">Enhance low frequencies</string>
+    <string name="bass_mode_title">Bass Mode</string>
+    <string name="bass_mode_natural">Natural</string>
+    <string name="bass_mode_punch">Punch</string>
+    <string name="bass_mode_subwoofer">Subwoofer</string>
+    <string name="bass_gain_title">Bass Gain</string>
+    <string name="bass_gain_summary">Boost amount</string>
+    <!-- Stereo & Spatial -->
+    <string name="category_stereo">Stereo Enhancement</string>
+    <string name="category_surround">Surround Sound</string>
+    <string name="category_spatial">Spatial Audio</string>
+    <string name="widener_title">Stereo Widener</string>
+    <string name="widener_summary">Expand stereo image</string>
+    <string name="widener_width_title">Width</string>
+    <string name="widener_width_summary">Stereo width</string>
+    <string name="crossfeed_title">Crossfeed</string>
+    <string name="crossfeed_summary">Reduce headphone stereo fatigue</string>
+    <string name="crossfeed_level_title">Crossfeed Level</string>
+    <string name="crossfeed_level_summary">Channel blending</string>
+    <string name="surround_title">Surround</string>
+    <string name="surround_summary">Haas effect spatial enhancement</string>
+    <string name="spatial_title">HRTF Spatial Audio</string>
+    <string name="spatial_summary">Steam Audio HRTF binaural rendering</string>
+    <string name="spatial_blend_title">Spatial Blend</string>
+    <string name="spatial_blend_summary">HRTF processing intensity</string>
+    <string name="spatial_hrtf_title">HRTF Profile</string>
+    <string name="spatial_hrtf_summary">Head model for spatial rendering</string>
+    <string name="spatial_hrtf_cipic">CIPIC 124</string>
+    <string name="spatial_hrtf_sadie">SADIE H12</string>
+    <!-- Dynamics -->
+    <string name="category_dynamics">Dynamics Control</string>
+    <string name="compressor_title">Compressor</string>
+    <string name="compressor_summary">Single-band dynamic range compression</string>
+    <string name="agc_title">Auto Gain Control</string>
+    <string name="agc_summary">Automatic volume leveling</string>
+    <string name="limiter_title">Limiter</string>
+    <string name="limiter_summary">Look-ahead brick-wall limiter</string>
+    <!-- Reverb & Saturation -->
+    <string name="category_reverb">Ambience &amp; Reverb</string>
+    <string name="category_saturation">Warmth &amp; Saturation</string>
+    <string name="reverb_title">Reverb</string>
+    <string name="reverb_summary">Room ambience simulation</string>
+    <string name="reverb_room_title">Room Size</string>
+    <string name="reverb_room_summary">Reverb room dimension</string>
+    <string name="reverb_wet_title">Wet Level</string>
+    <string name="reverb_wet_summary">Reverb mix</string>
+    <string name="tube_title">Tube Simulator</string>
+    <string name="tube_summary">Warm analog character</string>
+    <string name="tube_drive_title">Drive</string>
+    <string name="tube_drive_summary">Saturation intensity</string>
+    <string name="tube_mix_title">Mix</string>
+    <string name="tube_mix_summary">Dry/wet blend</string>
+    <string name="exciter_nav_title">Exciter</string>
+    <string name="exciter_nav_summary">Harmonic presence and clarity</string>
+    <!-- Equalizer screen -->
+    <string name="eq_category">Parametric EQ</string>
+    <string name="eq_enable_title">Enable Equalizer</string>
+    <string name="eq_enable_summary">10-band parametric equalizer</string>
+    <string name="eq_simple">Simple</string>
+    <string name="eq_advanced">Advanced</string>
+    <string name="eq_reset">Reset</string>
+    <string name="eq_preset_flat">Flat</string>
+    <string name="eq_preset_bass_boost">Bass Boost</string>
+    <string name="eq_preset_treble_boost">Treble Boost</string>
+    <string name="eq_preset_voice">Voice</string>
+    <string name="eq_preset_v_shape">V-Shape</string>
+    <string name="eq_preset_rock">Rock</string>
+    <string name="eq_label_bass">Bass</string>
+    <string name="eq_label_mid">Mid</string>
+    <string name="eq_label_treble">Treble</string>
+    <!-- FIR EQ screen -->
+    <string name="fir_eq_screen_title">FIR Equalizer</string>
+    <string name="fir_eq_category">Phase-Linear EQ</string>
+    <string name="fir_eq_enable_title">Enable FIR Equalizer</string>
+    <string name="fir_eq_enable_summary">15-band phase-linear equalizer</string>
+    <string name="fir_eq_flat">Flat</string>
+    <string name="fir_eq_plus_db">+20 dB</string>
+    <string name="fir_eq_minus_db">-20 dB</string>
+    <!-- Multiband screen -->
+    <string name="mcomp_screen_title">Multiband Compressor</string>
+    <string name="mcomp_category">Multiband Compressor</string>
+    <string name="mcomp_enable_title">Enable Multiband Compressor</string>
+    <string name="mcomp_enable_summary">Per-frequency dynamic range control</string>
+    <string name="mcomp_threshold_title">Threshold</string>
+    <string name="mcomp_threshold_summary">Compression onset level</string>
+    <string name="mcomp_ratio_title">Ratio</string>
+    <string name="mcomp_ratio_summary">Compression ratio</string>
+    <string name="mcomp_makeup_title">Makeup Gain</string>
+    <string name="mcomp_makeup_summary">Post-compression gain</string>
+    <string name="mcomp_band_low">Low</string>
+    <string name="mcomp_band_low_mid">Low-Mid</string>
+    <string name="mcomp_band_high_mid">High-Mid</string>
+    <string name="mcomp_band_high">High</string>
+    <string name="mcomp_range_low">&lt; 200 Hz</string>
+    <string name="mcomp_range_low_mid">200 - 1000 Hz</string>
+    <string name="mcomp_range_high_mid">1000 - 5000 Hz</string>
+    <string name="mcomp_range_high">&gt; 5000 Hz</string>
+    <!-- Exciter screen -->
+    <string name="exciter_screen_title">Exciter</string>
+    <string name="exciter_category">Harmonic Exciter</string>
+    <string name="exciter_enable_title">Enable Exciter</string>
+    <string name="exciter_enable_summary">Add harmonic presence and clarity</string>
+    <string name="exciter_drive_title">Drive</string>
+    <string name="exciter_drive_summary">Harmonic saturation intensity</string>
+    <string name="exciter_blend_title">Blend</string>
+    <string name="exciter_blend_summary">Harmonics mix level</string>
+    <string name="exciter_freq_title">Frequency</string>
+    <string name="exciter_freq_summary">Harmonic generation cutoff</string>
+    <!-- Convolver screen -->
+    <string name="convolver_screen_title">Convolver</string>
+    <string name="convolver_category">Impulse Response Convolver</string>
+    <string name="convolver_enable_title">Enable Convolver</string>
+    <string name="convolver_enable_summary">Apply impulse response filter</string>
+    <string name="convolver_load_ir">Load IR File</string>
+    <string name="convolver_no_ir">No impulse response loaded</string>
+    <string name="convolver_mix_title">Mix</string>
+    <string name="convolver_mix_summary">Wet/dry balance</string>
+    <string name="convolver_formats">Supported formats: WAV (16/24/32-bit PCM, 32-bit float)</string>
+    <!-- Presets screen -->
+    <string name="presets_screen_title">Sound Presets</string>
+    <string name="presets_save">Save Preset</string>
+    <string name="presets_empty">No presets saved yet</string>
+    <string name="preset_loaded">Loaded: %1$s</string>
+    <string name="presets_builtin_title">Quick Presets</string>
+    <string name="presets_saved_title">Saved Presets</string>
+    <string name="presets_tap_to_load">Tap to load settings</string>
+    <string name="presets_import">Import Preset</string>
+    <string name="presets_export">Export to File</string>
+    <string name="presets_share">Share Preset</string>
+    <string name="presets_rename">Rename Preset</string>
+    <string name="presets_delete">Delete Preset</string>
+    <string name="presets_options">Preset options</string>
+    <string name="presets_options_title">Preset Options</string>
+    <string name="presets_options_message">What would you like to do with this preset?</string>
+    <string name="presets_import_success">Preset imported</string>
+    <string name="presets_import_failed">Import failed: %1$s</string>
+    <string name="presets_export_success">Preset exported</string>
+    <string name="presets_export_failed">Export failed: %1$s</string>
+    <string name="presets_delete_title">Delete Preset</string>
+    <string name="presets_delete_message">Are you sure you want to delete \'%1$s\'?</string>
+    <string name="presets_rename_title">Rename Preset</string>
+    <string name="presets_rename_label">Nom du préréglage</string>
+    <string name="presets_save_title">Save Current Settings</string>
+    <string name="presets_save_label">Nom du préréglage</string>
+    <string name="presets_save_success">Preset \'%1$s\' saved</string>
+    <string name="presets_confirm_delete">Supprimer</string>
+    <string name="presets_confirm_rename">Rename</string>
+    <string name="presets_confirm_save">Sauvegarder</string>
+    <string name="presets_confirm_cancel">Annuler</string>
+    <string name="presets_share_subject">AxionFx Preset: %1$s</string>
+    <string name="presets_share_text">Check out my custom AxionFx audio preset: %1$s!</string>
+    <!-- Notification -->
+    <string name="notification_channel">AxionFx Audio Processing</string>
+    <string name="notification_title">AxionFx</string>
+    <string name="notification_text">Audio processing active</string>
+    <string name="notification_title_idle">AxionFx — Standby</string>
+    <string name="notification_text_idle">Waiting for media playback</string>
+    <!-- Power notice -->
+    <string name="power_notice">Audio processing uses additional CPU during playback. Disable unused effects to conserve battery.</string>
+    <string name="reset_dialog_title">Reset all effects?</string>
+    <string name="reset_dialog_message">This will restore all audio effects to their default settings.</string>
+    <string name="reset_confirm">Reset</string>
+    <string name="reset_cancel">Annuler</string>
+    <string name="stat_sample_rate">Sample Rate</string>
+    <string name="stat_buffer_size">Buffer Size</string>
+    <string name="stat_channels">Channels</string>
+    <string name="stat_bit_depth">Bit Depth</string>
+    <string name="stat_session">Session</string>
+    <string name="stat_latency">Latency</string>
+    <string name="detail_placeholder">Select an effect to configure</string>
+    <string name="nav_device_profiles">Device Profiles</string>
+    <string name="nav_device_profiles_summary">Swipeable presets per audio output</string>
+    <string name="device_profiles_title">Device Profiles</string>
+    <string name="device_profiles_swipe_hint">Swipe between outputs, pick a preset, tap Apply</string>
+    <string name="device_profiles_unbound">No preset assigned</string>
+    <string name="device_profiles_set_preset">Set preset</string>
+    <string name="device_profiles_apply">Apply</string>
+    <string name="device_profiles_none_bound">Assign a preset first</string>
+    <string name="device_profiles_pick_title">Preset for %1$s</string>
+    <string name="device_cat_speaker">Phone speaker</string>
+    <string name="device_cat_wired">Wired headphones</string>
+    <string name="device_cat_bluetooth">Bluetooth audio</string>
+    <string name="device_cat_usb">USB audio</string>
+    <string name="device_cat_other">Other outputs</string>
+    <string name="device_profiles_add_title">New profile</string>
+    <string name="device_profiles_add_summary">Create your own device profile and bind it to any preset</string>
+    <string name="device_profiles_add_button">Add profile</string>
+    <string name="device_profiles_add_label">Profile name</string>
+    <string name="device_profiles_add_confirm">Créer</string>
+    <string name="device_profiles_add_invalid">Invalid or duplicate name</string>
+    <string name="device_profiles_delete_title">Delete profile?</string>
+    <string name="device_profiles_delete_message">Remove \"%1$s\" and its preset binding?</string>
+</resources>
