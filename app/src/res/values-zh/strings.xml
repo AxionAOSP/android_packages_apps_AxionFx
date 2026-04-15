@@ -16,12 +16,12 @@
 -->
 <resources>
     <string name="app_name">AxionFx</string>
-    <string name="mode_off">關閉</string>
+    <string name="mode_off">关闭</string>
     <string name="mode_on">Always On</string>
     <string name="mode_media">Media Only</string>
     <!-- Status -->
     <string name="status_active">Processing Active</string>
-    <string name="status_disabled">已停用</string>
+    <string name="status_disabled">已禁用</string>
     <string name="status_media_only">Media-Only Mode</string>
     <string name="status_effects_active">%1$d effects active \u2022 %2$d%% gain</string>
     <string name="status_tap_to_enable">Tap master switch to enable</string>
@@ -118,7 +118,7 @@
     <string name="eq_enable_summary">10-band parametric equalizer</string>
     <string name="eq_simple">Simple</string>
     <string name="eq_advanced">Advanced</string>
-    <string name="eq_reset">重設</string>
+    <string name="eq_reset">重置</string>
     <string name="eq_preset_flat">Flat</string>
     <string name="eq_preset_bass_boost">Bass Boost</string>
     <string name="eq_preset_treble_boost">Treble Boost</string>
@@ -199,13 +199,13 @@
     <string name="presets_delete_title">Delete Preset</string>
     <string name="presets_delete_message">Are you sure you want to delete \'%1$s\'?</string>
     <string name="presets_rename_title">Rename Preset</string>
-    <string name="presets_rename_label">預設集名稱</string>
+    <string name="presets_rename_label">预设名称</string>
     <string name="presets_save_title">Save Current Settings</string>
-    <string name="presets_save_label">預設集名稱</string>
+    <string name="presets_save_label">预设名称</string>
     <string name="presets_save_success">Preset \'%1$s\' saved</string>
-    <string name="presets_confirm_delete">刪除</string>
+    <string name="presets_confirm_delete">删除</string>
     <string name="presets_confirm_rename">重命名</string>
-    <string name="presets_confirm_save">儲存</string>
+    <string name="presets_confirm_save">保存</string>
     <string name="presets_confirm_cancel">取消</string>
     <string name="presets_share_subject">AxionFx Preset: %1$s</string>
     <string name="presets_share_text">Check out my custom AxionFx audio preset: %1$s!</string>
@@ -219,7 +219,7 @@
     <string name="power_notice">Audio processing uses additional CPU during playback. Disable unused effects to conserve battery.</string>
     <string name="reset_dialog_title">Reset all effects?</string>
     <string name="reset_dialog_message">This will restore all audio effects to their default settings.</string>
-    <string name="reset_confirm">重設</string>
+    <string name="reset_confirm">重置</string>
     <string name="reset_cancel">取消</string>
     <string name="stat_sample_rate">Sample Rate</string>
     <string name="stat_buffer_size">Buffer Size</string>
@@ -234,7 +234,7 @@
     <string name="device_profiles_swipe_hint">Swipe between outputs, pick a preset, tap Apply</string>
     <string name="device_profiles_unbound">No preset assigned</string>
     <string name="device_profiles_set_preset">Set preset</string>
-    <string name="device_profiles_apply">套用</string>
+    <string name="device_profiles_apply">应用</string>
     <string name="device_profiles_none_bound">Assign a preset first</string>
     <string name="device_profiles_pick_title">Preset for %1$s</string>
     <string name="device_cat_speaker">Phone speaker</string>
@@ -246,8 +246,11 @@
     <string name="device_profiles_add_summary">Create your own device profile and bind it to any preset</string>
     <string name="device_profiles_add_button">Add profile</string>
     <string name="device_profiles_add_label">Profile name</string>
-    <string name="device_profiles_add_confirm">建立</string>
+    <string name="device_profiles_add_confirm">创建</string>
     <string name="device_profiles_add_invalid">Invalid or duplicate name</string>
     <string name="device_profiles_delete_title">Delete profile?</string>
     <string name="device_profiles_delete_message">Remove \"%1$s\" and its preset binding?</string>
+    <string name="device_profiles_auto_switch_title">Auto-switch profiles</string>
+    <string name="device_profiles_auto_switch_summary">Apply a bound preset automatically when the audio output changes</string>
+    <string name="dashboard_device_chip_unbound">No preset bound</string>
 </resources>
