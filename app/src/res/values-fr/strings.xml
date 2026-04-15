@@ -250,4 +250,7 @@
     <string name="device_profiles_add_invalid">Invalid or duplicate name</string>
     <string name="device_profiles_delete_title">Delete profile?</string>
     <string name="device_profiles_delete_message">Remove \"%1$s\" and its preset binding?</string>
+    <string name="device_profiles_auto_switch_title">Auto-switch profiles</string>
+    <string name="device_profiles_auto_switch_summary">Apply a bound preset automatically when the audio output changes</string>
+    <string name="dashboard_device_chip_unbound">No preset bound</string>
 </resources>
