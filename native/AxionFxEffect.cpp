@@ -23,6 +23,7 @@
 #define LOG_TAG "AHAL_AxionFxEffect"
 #include <android-base/logging.h>
 #include <fmq/AidlMessageQueue.h>
+#include <system/audio_effect.h>
 #include <system/audio_effects/effect_uuid.h>
 
 #include "AxionFxEffect.h"
@@ -83,19 +84,42 @@ AxionFxContext::AxionFxContext(int statusDepth, const Parameter::Common& common)
     mEngine.configure(common.input.base.sampleRate);
 }
 
+namespace {
+constexpr size_t kHeaderSize = sizeof(effect_param_t);
+
+inline size_t paddedSize(uint32_t psize) {
+    return ((psize - 1) / sizeof(int32_t) + 1) * sizeof(int32_t);
+}
+}
+
 RetCode AxionFxContext::setParams(const std::vector<uint8_t>& params) {
-    if (params.size() < sizeof(int32_t)) {
+    if (params.size() < kHeaderSize) {
         LOG(ERROR) << "setParams: too small " << params.size();
         return RetCode::ERROR_ILLEGAL_PARAMETER;
     }
 
-    int32_t paramId = *reinterpret_cast<const int32_t*>(params.data());
+    const auto* ep = reinterpret_cast<const effect_param_t*>(params.data());
+    const uint32_t psize = ep->psize;
+    const uint32_t vsize = ep->vsize;
+    if (psize < sizeof(int32_t)) {
+        LOG(ERROR) << "setParams: psize too small " << psize;
+        return RetCode::ERROR_ILLEGAL_PARAMETER;
+    }
+    const size_t voffset = paddedSize(psize);
+    if (params.size() < kHeaderSize + voffset + vsize) {
+        LOG(ERROR) << "setParams: truncated size=" << params.size()
+                   << " psize=" << psize << " vsize=" << vsize;
+        return RetCode::ERROR_ILLEGAL_PARAMETER;
+    }
+
+    const uint8_t* pdata = params.data() + kHeaderSize;
+    const uint8_t* vdata = pdata + voffset;
+    int32_t paramId = *reinterpret_cast<const int32_t*>(pdata);
 
     if (paramId == axionfx::PARAM_CONVOLVER_LOAD_IR) {
-        if (params.size() > sizeof(int32_t)) {
-            const char* pathData = reinterpret_cast<const char*>(params.data() + sizeof(int32_t));
-            size_t pathLen = params.size() - sizeof(int32_t);
-            std::string path(pathData, strnlen(pathData, pathLen));
+        if (vsize > 0) {
+            const char* pathData = reinterpret_cast<const char*>(vdata);
+            std::string path(pathData, strnlen(pathData, vsize));
             mEngine.loadIrFromPath(path.c_str());
         }
         mLastParams = params;
@@ -103,36 +127,51 @@ RetCode AxionFxContext::setParams(const std::vector<uint8_t>& params) {
     }
 
     if (paramId == axionfx::PARAM_CONVOLVER_LOAD_IR_DATA) {
-        if (params.size() > sizeof(int32_t)) {
-            const uint8_t* wavData = params.data() + sizeof(int32_t);
-            size_t wavSize = params.size() - sizeof(int32_t);
-            mEngine.loadIrFromData(wavData, wavSize);
+        if (vsize > 0) {
+            mEngine.loadIrFromData(vdata, vsize);
         }
         mLastParams = params;
         return RetCode::SUCCESS;
     }
 
-    if (params.size() < sizeof(axionfx::AxionFxParam)) {
-        LOG(ERROR) << "setParams: too small " << params.size();
+    if (vsize < sizeof(int32_t)) {
+        LOG(ERROR) << "setParams: vsize too small " << vsize;
         return RetCode::ERROR_ILLEGAL_PARAMETER;
     }
-
-    const auto* param = reinterpret_cast<const axionfx::AxionFxParam*>(params.data());
-    LOG(INFO) << "setParams paramId=" << param->paramId << " value=" << param->value;
-    mEngine.setParameter(param->paramId, param->value);
+    int32_t value = *reinterpret_cast<const int32_t*>(vdata);
+    LOG(INFO) << "setParams paramId=0x" << std::hex << paramId
+              << " value=" << std::dec << value;
+    mEngine.setParameter(paramId, value);
     mLastParams = params;
     return RetCode::SUCCESS;
 }
 
 std::vector<uint8_t> AxionFxContext::getParams(const std::vector<uint8_t>& id) const {
-    if (id.size() >= sizeof(int32_t)) {
-        int32_t paramId = *reinterpret_cast<const int32_t*>(id.data());
-        int32_t value = mEngine.getParameter(paramId);
-        axionfx::AxionFxParam result = {paramId, value};
-        const uint8_t* ptr = reinterpret_cast<const uint8_t*>(&result);
-        return std::vector<uint8_t>(ptr, ptr + sizeof(result));
+    int32_t paramId = 0;
+    if (id.size() >= kHeaderSize + sizeof(int32_t)) {
+        const auto* ep = reinterpret_cast<const effect_param_t*>(id.data());
+        if (ep->psize >= sizeof(int32_t) &&
+            id.size() >= kHeaderSize + paddedSize(ep->psize)) {
+            paramId = *reinterpret_cast<const int32_t*>(id.data() + kHeaderSize);
+        } else {
+            return mLastParams;
+        }
+    } else if (id.size() >= sizeof(int32_t)) {
+        paramId = *reinterpret_cast<const int32_t*>(id.data());
+    } else {
+        return mLastParams;
     }
-    return mLastParams;
+
+    int32_t value = mEngine.getParameter(paramId);
+    const size_t voffset = paddedSize(sizeof(int32_t));
+    std::vector<uint8_t> reply(kHeaderSize + voffset + sizeof(int32_t), 0);
+    auto* ep = reinterpret_cast<effect_param_t*>(reply.data());
+    ep->status = 0;
+    ep->psize = sizeof(int32_t);
+    ep->vsize = sizeof(int32_t);
+    std::memcpy(reply.data() + kHeaderSize, &paramId, sizeof(int32_t));
+    std::memcpy(reply.data() + kHeaderSize + voffset, &value, sizeof(int32_t));
+    return reply;
 }
 
 AxionFxEffect::~AxionFxEffect() {
