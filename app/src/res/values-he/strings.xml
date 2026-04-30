@@ -205,8 +205,8 @@
     <string name="presets_save_success">Preset \'%1$s\' saved</string>
     <string name="presets_confirm_delete">Delete</string>
     <string name="presets_confirm_rename">Rename</string>
-    <string name="presets_confirm_save">Save</string>
-    <string name="presets_confirm_cancel">Cancel</string>
+    <string name="presets_confirm_save">שמירה</string>
+    <string name="presets_confirm_cancel">ביטול</string>
     <string name="presets_share_subject">AxionFx Preset: %1$s</string>
     <string name="presets_share_text">Check out my custom AxionFx audio preset: %1$s!</string>
     <!-- Notification -->
@@ -220,7 +220,7 @@
     <string name="reset_dialog_title">Reset all effects?</string>
     <string name="reset_dialog_message">This will restore all audio effects to their default settings.</string>
     <string name="reset_confirm">Reset</string>
-    <string name="reset_cancel">Cancel</string>
+    <string name="reset_cancel">ביטול</string>
     <string name="stat_sample_rate">Sample Rate</string>
     <string name="stat_buffer_size">Buffer Size</string>
     <string name="stat_channels">Channels</string>
@@ -246,7 +246,7 @@
     <string name="device_profiles_add_summary">Create your own device profile and bind it to any preset</string>
     <string name="device_profiles_add_button">Add profile</string>
     <string name="device_profiles_add_label">Profile name</string>
-    <string name="device_profiles_add_confirm">Create</string>
+    <string name="device_profiles_add_confirm">יצירה</string>
     <string name="device_profiles_add_invalid">Invalid or duplicate name</string>
     <string name="device_profiles_delete_title">Delete profile?</string>
     <string name="device_profiles_delete_message">Remove \"%1$s\" and its preset binding?</string>
