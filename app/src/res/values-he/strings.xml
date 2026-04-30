@@ -118,7 +118,7 @@
     <string name="eq_enable_summary">10-band parametric equalizer</string>
     <string name="eq_simple">Simple</string>
     <string name="eq_advanced">Advanced</string>
-    <string name="eq_reset">Reset</string>
+    <string name="eq_reset">איפוס</string>
     <string name="eq_preset_flat">Flat</string>
     <string name="eq_preset_bass_boost">Bass Boost</string>
     <string name="eq_preset_treble_boost">Treble Boost</string>
@@ -204,7 +204,7 @@
     <string name="presets_save_label">Preset Name</string>
     <string name="presets_save_success">Preset \'%1$s\' saved</string>
     <string name="presets_confirm_delete">Delete</string>
-    <string name="presets_confirm_rename">Rename</string>
+    <string name="presets_confirm_rename">שינוי שם</string>
     <string name="presets_confirm_save">שמירה</string>
     <string name="presets_confirm_cancel">ביטול</string>
     <string name="presets_share_subject">AxionFx Preset: %1$s</string>
@@ -219,7 +219,7 @@
     <string name="power_notice">Audio processing uses additional CPU during playback. Disable unused effects to conserve battery.</string>
     <string name="reset_dialog_title">Reset all effects?</string>
     <string name="reset_dialog_message">This will restore all audio effects to their default settings.</string>
-    <string name="reset_confirm">Reset</string>
+    <string name="reset_confirm">איפוס</string>
     <string name="reset_cancel">ביטול</string>
     <string name="stat_sample_rate">Sample Rate</string>
     <string name="stat_buffer_size">Buffer Size</string>
@@ -234,7 +234,7 @@
     <string name="device_profiles_swipe_hint">Swipe between outputs, pick a preset, tap Apply</string>
     <string name="device_profiles_unbound">No preset assigned</string>
     <string name="device_profiles_set_preset">Set preset</string>
-    <string name="device_profiles_apply">Apply</string>
+    <string name="device_profiles_apply">החלה</string>
     <string name="device_profiles_none_bound">Assign a preset first</string>
     <string name="device_profiles_pick_title">Preset for %1$s</string>
     <string name="device_cat_speaker">Phone speaker</string>
