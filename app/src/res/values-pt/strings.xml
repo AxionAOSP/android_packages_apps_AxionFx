@@ -204,7 +204,7 @@
     <string name="presets_save_label">Nome da predefinição</string>
     <string name="presets_save_success">Preset \'%1$s\' saved</string>
     <string name="presets_confirm_delete">Deletar</string>
-    <string name="presets_confirm_rename">Rename</string>
+    <string name="presets_confirm_rename">Renomear</string>
     <string name="presets_confirm_save">Salvar</string>
     <string name="presets_confirm_cancel">Cancelar</string>
     <string name="presets_share_subject">AxionFx Preset: %1$s</string>
