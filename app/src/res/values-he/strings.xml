@@ -21,7 +21,7 @@
     <string name="mode_media">Media Only</string>
     <!-- Status -->
     <string name="status_active">Processing Active</string>
-    <string name="status_disabled">Disabled</string>
+    <string name="status_disabled">מושבת</string>
     <string name="status_media_only">Media-Only Mode</string>
     <string name="status_effects_active">%1$d effects active \u2022 %2$d%% gain</string>
     <string name="status_tap_to_enable">Tap master switch to enable</string>
