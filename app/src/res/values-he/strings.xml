@@ -16,7 +16,7 @@
 -->
 <resources>
     <string name="app_name">AxionFx</string>
-    <string name="mode_off">Off</string>
+    <string name="mode_off">כבויות</string>
     <string name="mode_on">Always On</string>
     <string name="mode_media">Media Only</string>
     <!-- Status -->
