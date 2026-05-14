@@ -204,7 +204,7 @@
     <string name="presets_save_label">預設集名稱</string>
     <string name="presets_save_success">預設集「%1$s」已儲存</string>
     <string name="presets_confirm_delete">刪除</string>
-    <string name="presets_confirm_rename">重命名</string>
+    <string name="presets_confirm_rename">重新命名</string>
     <string name="presets_confirm_save">儲存</string>
     <string name="presets_confirm_cancel">取消</string>
     <string name="presets_share_subject">AxionFx 預設集：%1$s</string>
