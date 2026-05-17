@@ -215,7 +215,7 @@
     <string name="presets_save_label">Назва пресета</string>
     <string name="presets_save_success">Preset \'%1$s\' saved</string>
     <string name="presets_confirm_delete">Видалити</string>
-    <string name="presets_confirm_rename">Rename</string>
+    <string name="presets_confirm_rename">Перейменувати</string>
     <string name="presets_confirm_save">Зберегти</string>
     <string name="presets_confirm_cancel">Скасувати</string>
     <string name="presets_share_subject">AxionFx Preset: %1$s</string>
