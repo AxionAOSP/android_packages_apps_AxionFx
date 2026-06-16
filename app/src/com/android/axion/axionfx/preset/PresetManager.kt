@@ -71,7 +71,7 @@ object PresetManager {
 
     private val BAND_KEY_PREFIXES = listOf(
         EffectKeys.EQ_BAND_PREFIX to 10,
-        EffectKeys.ARBITRARY_EQ_BAND_PREFIX to 39,
+        EffectKeys.ARBITRARY_EQ_BAND_PREFIX to 32,
         EffectKeys.FIR_EQ_BAND_PREFIX to 128,
         EffectKeys.MCOMP_THRESH_PREFIX to 4,
         EffectKeys.MCOMP_RATIO_PREFIX to 4,

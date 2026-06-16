@@ -249,7 +249,7 @@ class EffectInteractor(private val repo: EffectRepository) {
         for (i in 0..9) {
             setEqBandLevel(i, 0)
         }
-        for (i in 0..38) {
+        for (i in 0..31) {
             setArbitraryEqBandLevel(i, 0)
         }
         setFirEqEnabled(EffectDefaults.FIR_EQ_ENABLED)

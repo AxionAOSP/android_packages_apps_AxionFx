@@ -152,7 +152,7 @@ class AxionFxService : Service() {
         AxionFxController.setOutputGain(prefs.getInt(KEY_OUTPUT_GAIN, 100))
         AxionFxController.setParameter(0x102, prefs.getInt("output_pan", 0))
 
-        for (i in 0..38) {
+        for (i in 0..31) {
             AxionFxController.setArbitraryEqBandLevel(i, prefs.getInt("${KEY_ARBITRARY_EQ_BAND_PREFIX}$i", 0))
         }
         for (i in 0..9) {
