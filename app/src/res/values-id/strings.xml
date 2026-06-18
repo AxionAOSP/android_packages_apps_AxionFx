@@ -215,7 +215,7 @@
     <string name="presets_save_label">Nama preset</string>
     <string name="presets_save_success">Preset \'%1$s\' saved</string>
     <string name="presets_confirm_delete">Hapus</string>
-    <string name="presets_confirm_rename">Rename</string>
+    <string name="presets_confirm_rename">Ubah nama</string>
     <string name="presets_confirm_save">Simpan</string>
     <string name="presets_confirm_cancel">Batal</string>
     <string name="presets_share_subject">AxionFx Preset: %1$s</string>
