@@ -46,8 +46,8 @@
     <string name="category_effects">Advanced Effects</string>
     <string name="nav_equalizer">Equalizer</string>
     <string name="nav_equalizer_summary">39-node arbitrary response equalizer</string>
-    <string name="nav_fir_eq">FIR Equalizer</string>
-    <string name="nav_fir_eq_summary">15-band phase-linear equalizer</string>
+    <string name="nav_fir_eq">Еквалайзер на базі КІХ</string>
+    <string name="nav_fir_eq_summary">15-смуговий фазолінійний еквалайзер</string>
     <string name="nav_multiband">Multiband Compressor</string>
     <string name="nav_multiband_summary">Per-frequency dynamic range control</string>
     <string name="nav_convolver">Convolver</string>
@@ -60,7 +60,7 @@
     <string name="bass_boost_title">Bass Boost</string>
     <string name="bass_boost_summary">Enhance low frequencies</string>
     <string name="bass_mode_title">Bass Mode</string>
-    <string name="bass_mode_natural">Natural</string>
+    <string name="bass_mode_natural">Натуральний</string>
     <string name="bass_mode_punch">Punch</string>
     <string name="bass_mode_subwoofer">Subwoofer</string>
     <string name="bass_gain_title">Bass Gain</string>
@@ -140,10 +140,10 @@
     <string name="eq_autoeq_import_success">AutoEQ imported</string>
     <string name="eq_autoeq_import_failed">Unsupported AutoEQ file</string>
     <!-- FIR EQ screen -->
-    <string name="fir_eq_screen_title">FIR Equalizer</string>
+    <string name="fir_eq_screen_title">Еквалайзер на базі КІХ</string>
     <string name="fir_eq_category">Phase-Linear EQ</string>
     <string name="fir_eq_enable_title">Enable FIR Equalizer</string>
-    <string name="fir_eq_enable_summary">15-band phase-linear equalizer</string>
+    <string name="fir_eq_enable_summary">15-смуговий фазолінійний еквалайзер</string>
     <string name="fir_eq_flat">Flat</string>
     <string name="fir_eq_plus_db">+20 dB</string>
     <string name="fir_eq_minus_db">-20 dB</string>
