@@ -60,7 +60,7 @@
     <string name="bass_boost_title">Bass Boost</string>
     <string name="bass_boost_summary">Enhance low frequencies</string>
     <string name="bass_mode_title">מצב בס</string>
-    <string name="bass_mode_natural">Natural</string>
+    <string name="bass_mode_natural">טבעי</string>
     <string name="bass_mode_punch">Punch</string>
     <string name="bass_mode_subwoofer">Subwoofer</string>
     <string name="bass_gain_title">Bass Gain</string>
