@@ -17,12 +17,12 @@
 <resources>
     <string name="app_name">AxionFx</string>
     <string name="mode_off">Kapalı</string>
-    <string name="mode_on">Always On</string>
-    <string name="mode_media">Media Only</string>
+    <string name="mode_on">Her Zaman Açık</string>
+    <string name="mode_media">Sadece Medya</string>
     <!-- Status -->
     <string name="status_active">Processing Active</string>
     <string name="status_disabled">Devre Dışı</string>
-    <string name="status_media_only">Media-Only Mode</string>
+    <string name="status_media_only">Yalnızca Medya Modu</string>
     <string name="status_effects_active">%1$d effects active \u2022 %2$d%% gain</string>
     <string name="status_tap_to_enable">Tap master switch to enable</string>
     <!-- Master -->
