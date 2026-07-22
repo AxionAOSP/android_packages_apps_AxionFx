@@ -17,62 +17,62 @@
 <resources>
     <string name="app_name">AxionFx</string>
     <string name="mode_off">Вимкнено</string>
-    <string name="mode_on">Always On</string>
-    <string name="mode_media">Media Only</string>
+    <string name="mode_on">Завжди ввімкнено</string>
+    <string name="mode_media">Лише медіа</string>
     <!-- Status -->
-    <string name="status_active">Processing Active</string>
+    <string name="status_active">Обробляється</string>
     <string name="status_disabled">Вимкнено</string>
-    <string name="status_media_only">Media-Only Mode</string>
-    <string name="status_effects_active">%1$d effects active \u2022 %2$d%% gain</string>
-    <string name="status_tap_to_enable">Tap master switch to enable</string>
+    <string name="status_media_only">Режим «Тільки медіа»</string>
+    <string name="status_effects_active">Активно ефектів: %1$d \u2022 приріст %2$d%%</string>
+    <string name="status_tap_to_enable">Торкніться головного перемикача для активації</string>
     <!-- Master -->
-    <string name="category_master">Master Limiter</string>
-    <string name="master_enable_title">Enable AxionFx</string>
-    <string name="master_enable_summary">Global audio processing engine</string>
-    <string name="media_only_title">Media-only mode</string>
-    <string name="media_only_summary">Only process audio during media playback</string>
-    <string name="output_gain_title">Output Gain</string>
-    <string name="output_gain_summary">Volume boost/cut</string>
-    <string name="output_pan_title">Output Balance</string>
-    <string name="output_pan_summary">Left/right balance</string>
-    <string name="limiter_threshold_title">Limiter Threshold</string>
-    <string name="limiter_threshold_summary">Limiter ceiling level</string>
-    <string name="surround_delay_title">Surround Delay</string>
-    <string name="surround_delay_summary">Haas effect timing</string>
-    <string name="surround_width_title">Surround Width</string>
-    <string name="surround_width_summary">Cross-channel mix level</string>
-    <string name="reset_all">Reset All</string>
+    <string name="category_master">Головний обмежувач</string>
+    <string name="master_enable_title">Увімкнути AxionFx</string>
+    <string name="master_enable_summary">Глобальний рушій обробки аудіо</string>
+    <string name="media_only_title">Режим «Тільки медіа»</string>
+    <string name="media_only_summary">Обробляти аудіо лише під час відтворення медіафайлів</string>
+    <string name="output_gain_title">Вихідне підсилення</string>
+    <string name="output_gain_summary">Підсилення / послаблення гучності</string>
+    <string name="output_pan_title">Баланс виходу</string>
+    <string name="output_pan_summary">Лівий / Правий баланс</string>
+    <string name="limiter_threshold_title">Поріг обмежувача</string>
+    <string name="limiter_threshold_summary">Максимальний рівень обмежувача</string>
+    <string name="surround_delay_title">Затримка об’ємного звуку</string>
+    <string name="surround_delay_summary">Часові параметри ефекту Хааса</string>
+    <string name="surround_width_title">Ширина об’ємного звуку</string>
+    <string name="surround_width_summary">Рівень міжканального змішування</string>
+    <string name="reset_all">Скинути все</string>
     <!-- Effects navigation -->
-    <string name="category_effects">Advanced Effects</string>
-    <string name="nav_equalizer">Equalizer</string>
-    <string name="nav_equalizer_summary">39-node arbitrary response equalizer</string>
+    <string name="category_effects">Додаткові ефекти</string>
+    <string name="nav_equalizer">Еквалайзер</string>
+    <string name="nav_equalizer_summary">39-смуговий еквалайзер довільної характеристики</string>
     <string name="nav_fir_eq">Еквалайзер на базі КІХ</string>
     <string name="nav_fir_eq_summary">15-смуговий фазолінійний еквалайзер</string>
-    <string name="nav_multiband">Multiband Compressor</string>
-    <string name="nav_multiband_summary">Per-frequency dynamic range control</string>
-    <string name="nav_convolver">Convolver</string>
-    <string name="nav_convolver_summary">Impulse response filter</string>
-    <string name="nav_presets">Sound Presets</string>
-    <string name="nav_presets_summary">Manage and share audio profiles</string>
-    <string name="category_library">Presets &amp; Profiles</string>
+    <string name="nav_multiband">Багатосмуговий компресор</string>
+    <string name="nav_multiband_summary">Почастотне керування динамічним діапазоном</string>
+    <string name="nav_convolver">Конвольвер</string>
+    <string name="nav_convolver_summary">Фільтр з імпульсною характеристикою</string>
+    <string name="nav_presets">Передустановки звуку</string>
+    <string name="nav_presets_summary">Керуйте аудіопрофілями та діліться ними</string>
+    <string name="category_library">Передустановки та профілі</string>
     <!-- Bass -->
-    <string name="category_bass">Bass &amp; Clarity</string>
-    <string name="bass_boost_title">Bass Boost</string>
-    <string name="bass_boost_summary">Enhance low frequencies</string>
-    <string name="bass_mode_title">Bass Mode</string>
+    <string name="category_bass">Бас і чіткість</string>
+    <string name="bass_boost_title">Підсилення басів</string>
+    <string name="bass_boost_summary">Покращення низьких частот</string>
+    <string name="bass_mode_title">Режим басу</string>
     <string name="bass_mode_natural">Натуральний</string>
-    <string name="bass_mode_punch">Punch</string>
-    <string name="bass_mode_subwoofer">Subwoofer</string>
-    <string name="bass_gain_title">Bass Gain</string>
-    <string name="bass_gain_summary">Boost amount</string>
+    <string name="bass_mode_punch">Ударні</string>
+    <string name="bass_mode_subwoofer">Сабвуфер</string>
+    <string name="bass_gain_title">Підсилення басу</string>
+    <string name="bass_gain_summary">Величина підсилення</string>
     <!-- Stereo & Spatial -->
-    <string name="category_stereo">Stereo Enhancement</string>
-    <string name="category_surround">Surround Sound</string>
-    <string name="category_spatial">Spatial Audio</string>
-    <string name="widener_title">Stereo Widener</string>
-    <string name="widener_summary">Expand stereo image</string>
-    <string name="widener_width_title">Width</string>
-    <string name="widener_width_summary">Stereo width</string>
+    <string name="category_stereo">Покращення стерео</string>
+    <string name="category_surround">Об’ємний звук</string>
+    <string name="category_spatial">Просторовий звук</string>
+    <string name="widener_title">Розширення стерео</string>
+    <string name="widener_summary">Розширення стереопанорами</string>
+    <string name="widener_width_title">Ширина</string>
+    <string name="widener_width_summary">Ширина стерео</string>
     <string name="crossfeed_title">Crossfeed</string>
     <string name="crossfeed_summary">Reduce headphone stereo fatigue</string>
     <string name="crossfeed_level_title">Crossfeed Level</string>
@@ -115,7 +115,7 @@
     <!-- Equalizer screen -->
     <string name="eq_category">Parametric EQ</string>
     <string name="eq_enable_title">Enable Equalizer</string>
-    <string name="eq_enable_summary">39-node arbitrary response equalizer</string>
+    <string name="eq_enable_summary">39-смуговий еквалайзер довільної характеристики</string>
     <string name="eq_simple">Simple</string>
     <string name="eq_advanced">Advanced</string>
     <string name="eq_autoeq_mode">AutoEQ</string>
@@ -127,7 +127,7 @@
     <string name="eq_reset">Скинути</string>
     <string name="eq_smooth_curve">Smooth Curve</string>
     <string name="eq_preset_flat">Flat</string>
-    <string name="eq_preset_bass_boost">Bass Boost</string>
+    <string name="eq_preset_bass_boost">Підсилення басів</string>
     <string name="eq_preset_treble_boost">Treble Boost</string>
     <string name="eq_preset_voice">Voice</string>
     <string name="eq_preset_v_shape">V-Shape</string>
@@ -148,10 +148,10 @@
     <string name="fir_eq_plus_db">+20 dB</string>
     <string name="fir_eq_minus_db">-20 dB</string>
     <!-- Multiband screen -->
-    <string name="mcomp_screen_title">Multiband Compressor</string>
-    <string name="mcomp_category">Multiband Compressor</string>
+    <string name="mcomp_screen_title">Багатосмуговий компресор</string>
+    <string name="mcomp_category">Багатосмуговий компресор</string>
     <string name="mcomp_enable_title">Enable Multiband Compressor</string>
-    <string name="mcomp_enable_summary">Per-frequency dynamic range control</string>
+    <string name="mcomp_enable_summary">Почастотне керування динамічним діапазоном</string>
     <string name="mcomp_threshold_title">Threshold</string>
     <string name="mcomp_threshold_summary">Compression onset level</string>
     <string name="mcomp_ratio_title">Ratio</string>
@@ -178,7 +178,7 @@
     <string name="exciter_freq_title">Frequency</string>
     <string name="exciter_freq_summary">Harmonic generation cutoff</string>
     <!-- Convolver screen -->
-    <string name="convolver_screen_title">Convolver</string>
+    <string name="convolver_screen_title">Конвольвер</string>
     <string name="convolver_category">Impulse Response Convolver</string>
     <string name="convolver_enable_title">Enable Convolver</string>
     <string name="convolver_enable_summary">Apply impulse response filter</string>
@@ -188,7 +188,7 @@
     <string name="convolver_mix_summary">Wet/dry balance</string>
     <string name="convolver_formats">Supported formats: WAV (16/24/32-bit PCM, 32-bit float)</string>
     <!-- Presets screen -->
-    <string name="presets_screen_title">Sound Presets</string>
+    <string name="presets_screen_title">Передустановки звуку</string>
     <string name="presets_save">Save Preset</string>
     <string name="presets_empty">No presets saved yet</string>
     <string name="preset_loaded">Loaded: %1$s</string>
