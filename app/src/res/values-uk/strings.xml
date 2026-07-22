@@ -103,13 +103,13 @@
     <string name="reverb_room_title">Розмір кімнати</string>
     <string name="reverb_room_summary">Розмір кімнати з відлунням</string>
     <string name="reverb_wet_title">Оброблений сигнал</string>
-    <string name="reverb_wet_summary">Reverb mix</string>
-    <string name="tube_title">Tube Simulator</string>
-    <string name="tube_summary">Warm analog character</string>
-    <string name="tube_drive_title">Drive</string>
-    <string name="tube_drive_summary">Saturation intensity</string>
-    <string name="tube_mix_title">Mix</string>
-    <string name="tube_mix_summary">Dry/wet blend</string>
+    <string name="reverb_wet_summary">Рівень відлуння</string>
+    <string name="tube_title">Ламповий симулятор</string>
+    <string name="tube_summary">Теплий аналоговий тембр</string>
+    <string name="tube_drive_title">Драйв</string>
+    <string name="tube_drive_summary">Рівень насиченості</string>
+    <string name="tube_mix_title">Змішування</string>
+    <string name="tube_mix_summary">Оброблене / Необроблене змішування</string>
     <string name="exciter_nav_title">Exciter</string>
     <string name="exciter_nav_summary">Harmonic presence and clarity</string>
     <!-- Equalizer screen -->
@@ -171,7 +171,7 @@
     <string name="exciter_category">Harmonic Exciter</string>
     <string name="exciter_enable_title">Enable Exciter</string>
     <string name="exciter_enable_summary">Add harmonic presence and clarity</string>
-    <string name="exciter_drive_title">Drive</string>
+    <string name="exciter_drive_title">Драйв</string>
     <string name="exciter_drive_summary">Harmonic saturation intensity</string>
     <string name="exciter_blend_title">Blend</string>
     <string name="exciter_blend_summary">Harmonics mix level</string>
@@ -184,7 +184,7 @@
     <string name="convolver_enable_summary">Apply impulse response filter</string>
     <string name="convolver_load_ir">Load IR File</string>
     <string name="convolver_no_ir">No impulse response loaded</string>
-    <string name="convolver_mix_title">Mix</string>
+    <string name="convolver_mix_title">Змішування</string>
     <string name="convolver_mix_summary">Wet/dry balance</string>
     <string name="convolver_formats">Supported formats: WAV (16/24/32-bit PCM, 32-bit float)</string>
     <!-- Presets screen -->
