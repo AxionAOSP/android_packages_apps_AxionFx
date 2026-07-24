@@ -70,7 +70,7 @@
     <string name="category_surround">Surround Sound</string>
     <string name="category_spatial">Spatial Audio</string>
     <string name="widener_title">Stereo Widener</string>
-    <string name="widener_summary">Expand stereo image</string>
+    <string name="widener_summary">Expandir imagen estéreo</string>
     <string name="widener_width_title">Width</string>
     <string name="widener_width_summary">Stereo width</string>
     <string name="crossfeed_title">Crossfeed</string>
