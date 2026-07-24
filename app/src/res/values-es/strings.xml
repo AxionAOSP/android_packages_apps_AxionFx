@@ -215,8 +215,8 @@
     <string name="presets_save_label">Nombre del preajuste</string>
     <string name="presets_save_success">Preset \'%1$s\' saved</string>
     <string name="presets_confirm_delete">Borrar</string>
-    <string name="presets_confirm_rename">Rename</string>
-    <string name="presets_confirm_save">Ahorrar</string>
+    <string name="presets_confirm_rename">Renombrar</string>
+    <string name="presets_confirm_save">Guardar</string>
     <string name="presets_confirm_cancel">Cancelar</string>
     <string name="presets_share_subject">AxionFx Preset: %1$s</string>
     <string name="presets_share_text">Check out my custom AxionFx audio preset: %1$s!</string>
