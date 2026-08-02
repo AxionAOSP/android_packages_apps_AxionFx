@@ -121,7 +121,7 @@
     <string name="eq_autoeq_mode">AutoEQ</string>
     <string name="eq_arbitrary_mode">Arbitrary EQ</string>
     <string name="eq_arbitrary_title">Arbitrary Response EQ</string>
-    <string name="eq_arbitrary_summary">Draw a 39-node magnitude response, or import an AutoEQ file as a starting point</string>
+    <string name="eq_arbitrary_summary">绘制 39 个节点的幅度响应曲线，或导入 AutoEQ 文件作为起点</string>
     <string name="eq_magnitude_response">Magnitude Response</string>
     <string name="eq_db_unit">dB</string>
     <string name="eq_reset">重置</string>
@@ -135,10 +135,10 @@
     <string name="eq_label_bass">低音</string>
     <string name="eq_label_mid">中音</string>
     <string name="eq_label_treble">高音</string>
-    <string name="eq_autoeq_import_title">Import AutoEQ File</string>
+    <string name="eq_autoeq_import_title">导入 AutoEQ 文件</string>
     <string name="eq_autoeq_import_summary">可选：将图形均衡器或参数均衡器的文本加载到可编辑的 AutoEQ 图形中</string>
-    <string name="eq_autoeq_import_success">AutoEQ imported</string>
-    <string name="eq_autoeq_import_failed">Unsupported AutoEQ file</string>
+    <string name="eq_autoeq_import_success">AutoEQ 已导入</string>
+    <string name="eq_autoeq_import_failed">不支持的AutoEQ 文件</string>
     <!-- FIR EQ screen -->
     <string name="fir_eq_screen_title">FIR滤波</string>
     <string name="fir_eq_category">线性相位均衡器</string>
