@@ -45,7 +45,7 @@
     <!-- Effects navigation -->
     <string name="category_effects">高级音效</string>
     <string name="nav_equalizer">均衡器</string>
-    <string name="nav_equalizer_summary">39-node arbitrary response equalizer</string>
+    <string name="nav_equalizer_summary">39节点任意响应均衡器</string>
     <string name="nav_fir_eq">FIR滤波</string>
     <string name="nav_fir_eq_summary">15频段线性均衡</string>
     <string name="nav_multiband">多波段压缩</string>
@@ -115,17 +115,17 @@
     <!-- Equalizer screen -->
     <string name="eq_category">参数均衡器</string>
     <string name="eq_enable_title">启用均衡器</string>
-    <string name="eq_enable_summary">39-node arbitrary response equalizer</string>
+    <string name="eq_enable_summary">39节点任意响应均衡器</string>
     <string name="eq_simple">简易</string>
     <string name="eq_advanced">高级设置</string>
     <string name="eq_autoeq_mode">AutoEQ</string>
-    <string name="eq_arbitrary_mode">Arbitrary EQ</string>
-    <string name="eq_arbitrary_title">Arbitrary Response EQ</string>
+    <string name="eq_arbitrary_mode">自定义均衡</string>
+    <string name="eq_arbitrary_title">自定义响应均衡</string>
     <string name="eq_arbitrary_summary">绘制 39 个节点的幅度响应曲线，或导入 AutoEQ 文件作为起点</string>
-    <string name="eq_magnitude_response">Magnitude Response</string>
+    <string name="eq_magnitude_response">幅度响应</string>
     <string name="eq_db_unit">dB</string>
     <string name="eq_reset">重置</string>
-    <string name="eq_smooth_curve">Smooth Curve</string>
+    <string name="eq_smooth_curve">圆顺曲线</string>
     <string name="eq_preset_flat">平坦</string>
     <string name="eq_preset_bass_boost">低音增幅</string>
     <string name="eq_preset_treble_boost">高音增强</string>
