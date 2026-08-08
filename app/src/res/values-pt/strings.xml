@@ -83,17 +83,17 @@
     <string name="spatial_summary">Renderização binaural de áudio Steam HRTF</string>
     <string name="spatial_blend_title">Spatial Blend</string>
     <string name="spatial_blend_summary">Intensidade de processamento HRTF</string>
-    <string name="spatial_hrtf_title">HRTF Profile</string>
-    <string name="spatial_hrtf_summary">Head model for spatial rendering</string>
+    <string name="spatial_hrtf_title">Perfil HRTF</string>
+    <string name="spatial_hrtf_summary">Modelo de cabeça para renderização espacial</string>
     <string name="spatial_hrtf_cipic">CIPIC 124</string>
     <string name="spatial_hrtf_sadie">SADIE H12</string>
     <!-- Dynamics -->
-    <string name="category_dynamics">Dynamics Control</string>
+    <string name="category_dynamics">Controle de Dinâmica</string>
     <string name="compressor_title">Compressor</string>
-    <string name="compressor_summary">Single-band dynamic range compression</string>
-    <string name="agc_title">Auto Gain Control</string>
-    <string name="agc_summary">Automatic volume leveling</string>
-    <string name="limiter_title">Limiter</string>
+    <string name="compressor_summary">Compressão dinâmica de banda única</string>
+    <string name="agc_title">Controle de ganho automático</string>
+    <string name="agc_summary">Nivelamento de volume automático</string>
+    <string name="limiter_title">Limitador</string>
     <string name="limiter_summary">Look-ahead brick-wall limiter</string>
     <!-- Reverb & Saturation -->
     <string name="category_reverb">Ambience &amp; Reverb</string>
