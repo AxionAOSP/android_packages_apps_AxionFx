@@ -32,13 +32,13 @@
     <string name="media_only_title">Режим «Тільки медіа»</string>
     <string name="media_only_summary">Обробляти аудіо лише під час відтворення медіафайлів</string>
     <string name="output_gain_title">Вихідне підсилення</string>
-    <string name="output_gain_summary">Підсилення / послаблення гучності</string>
+    <string name="output_gain_summary">Підсилення/зниження гучності</string>
     <string name="output_pan_title">Баланс виходу</string>
-    <string name="output_pan_summary">Лівий / Правий баланс</string>
+    <string name="output_pan_summary">Баланс L/R</string>
     <string name="limiter_threshold_title">Поріг обмежувача</string>
     <string name="limiter_threshold_summary">Максимальний рівень обмежувача</string>
     <string name="surround_delay_title">Затримка об’ємного звуку</string>
-    <string name="surround_delay_summary">Часові параметри ефекту Хааса</string>
+    <string name="surround_delay_summary">Час ефекту Гааса</string>
     <string name="surround_width_title">Ширина об’ємного звуку</string>
     <string name="surround_width_summary">Рівень міжканального змішування</string>
     <string name="reset_all">Скинути все</string>
@@ -46,15 +46,15 @@
     <string name="category_effects">Додаткові ефекти</string>
     <string name="nav_equalizer">Еквалайзер</string>
     <string name="nav_equalizer_summary">39-смуговий еквалайзер довільної характеристики</string>
-    <string name="nav_fir_eq">Еквалайзер на базі КІХ</string>
+    <string name="nav_fir_eq">FIR-еквалайзер</string>
     <string name="nav_fir_eq_summary">15-смуговий фазолінійний еквалайзер</string>
     <string name="nav_multiband">Багатосмуговий компресор</string>
     <string name="nav_multiband_summary">Почастотне керування динамічним діапазоном</string>
-    <string name="nav_convolver">Конвольвер</string>
-    <string name="nav_convolver_summary">Фільтр з імпульсною характеристикою</string>
-    <string name="nav_presets">Передустановки звуку</string>
-    <string name="nav_presets_summary">Керуйте аудіопрофілями та діліться ними</string>
-    <string name="category_library">Передустановки та профілі</string>
+    <string name="nav_convolver">Конволвер</string>
+    <string name="nav_convolver_summary">Фільтр імпульсної характеристики</string>
+    <string name="nav_presets">Звукові пресети</string>
+    <string name="nav_presets_summary">Керування та обмін аудіопрофілями</string>
+    <string name="category_library">Пересети та профілі</string>
     <!-- Bass -->
     <string name="category_bass">Бас і чіткість</string>
     <string name="bass_boost_title">Підсилення басів</string>
@@ -140,7 +140,7 @@
     <string name="eq_autoeq_import_success">АвтоEQ імпортовано</string>
     <string name="eq_autoeq_import_failed">Непідтримуваний файл AutoEQ</string>
     <!-- FIR EQ screen -->
-    <string name="fir_eq_screen_title">Еквалайзер на базі КІХ</string>
+    <string name="fir_eq_screen_title">FIR-еквалайзер</string>
     <string name="fir_eq_category">Фазолінійний еквалайзер</string>
     <string name="fir_eq_enable_title">Увімкнути FIR-еквалайзер</string>
     <string name="fir_eq_enable_summary">15-смуговий фазолінійний еквалайзер</string>
@@ -178,7 +178,7 @@
     <string name="exciter_freq_title">Частота</string>
     <string name="exciter_freq_summary">Поріг генерації гармонік</string>
     <!-- Convolver screen -->
-    <string name="convolver_screen_title">Конвольвер</string>
+    <string name="convolver_screen_title">Конволвер</string>
     <string name="convolver_category">Конвольвер імпульсної характеристики</string>
     <string name="convolver_enable_title">Увімкнути конвольвер</string>
     <string name="convolver_enable_summary">Застосувати фільтр імпульсної характеристики</string>
@@ -188,7 +188,7 @@
     <string name="convolver_mix_summary">Баланс чистого / обробленого сигналу</string>
     <string name="convolver_formats">Підтримувані формати: WAV (16/24/32-бітний PCM, 32-бітний float)</string>
     <!-- Presets screen -->
-    <string name="presets_screen_title">Передустановки звуку</string>
+    <string name="presets_screen_title">Звукові пресети</string>
     <string name="presets_save">Зберегти передустановку</string>
     <string name="presets_empty">Немає збережених передустановок</string>
     <string name="preset_loaded">Завантажено: %1$s</string>
