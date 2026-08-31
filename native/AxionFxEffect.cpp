@@ -33,15 +33,41 @@ using aidl::android::hardware::audio::effect::AxionFxContext;
 using aidl::android::hardware::audio::effect::AxionFxEffect;
 using aidl::android::hardware::audio::effect::DefaultExtension;
 using aidl::android::hardware::audio::effect::Descriptor;
-using aidl::android::hardware::audio::effect::getEffectImplUuidAxionFx;
-using aidl::android::hardware::audio::effect::getEffectTypeUuidAxionFx;
 using aidl::android::hardware::audio::effect::IEffect;
 using aidl::android::hardware::audio::effect::VendorExtension;
 using aidl::android::media::audio::common::AudioUuid;
 
+static inline AudioUuid effectUuidToAidl(const effect_uuid_t& u) {
+    AudioUuid aidlUuid;
+    aidlUuid.timeLow = static_cast<int32_t>(u.timeLow);
+    aidlUuid.timeMid = static_cast<int32_t>(u.timeMid);
+    aidlUuid.timeHiAndVersion = static_cast<int32_t>(u.timeHiAndVersion);
+    aidlUuid.clockSeq = static_cast<int32_t>(u.clockSeq);
+    aidlUuid.node.assign(u.node, u.node + 6);
+    return aidlUuid;
+}
+
+static const effect_uuid_t kAxionFxTypeUuid = {
+    0x5867be72, 0x4060, 0x4c55, 0xa378, {0xc1, 0xcd, 0xef, 0x3e, 0x13, 0x53}
+};
+
+static const effect_uuid_t kAxionFxImplUuid = {
+    0xf35cb927, 0xa887, 0x4f3d, 0x847f, {0x77, 0x06, 0x34, 0x48, 0x6d, 0x53}
+};
+
+const AudioUuid& getEffectTypeUuidAxionFx() {
+    static const AudioUuid uuid = effectUuidToAidl(kAxionFxTypeUuid);
+    return uuid;
+}
+
+const AudioUuid& getEffectImplUuidAxionFx() {
+    static const AudioUuid uuid = effectUuidToAidl(kAxionFxImplUuid);
+    return uuid;
+}
+
 extern "C" binder_exception_t createEffect(const AudioUuid* in_impl_uuid,
                                            std::shared_ptr<IEffect>* instanceSpp) {
-    if (!in_impl_uuid || *in_impl_uuid != getEffectImplUuidAxionFx()) {
+    if (!in_impl_uuid || *in_impl_uuid != ::getEffectImplUuidAxionFx()) {
         LOG(ERROR) << __func__ << " uuid not supported";
         return EX_ILLEGAL_ARGUMENT;
     }
@@ -57,7 +83,7 @@ extern "C" binder_exception_t createEffect(const AudioUuid* in_impl_uuid,
 
 extern "C" binder_exception_t queryEffect(const AudioUuid* in_impl_uuid,
                                           Descriptor* _aidl_return) {
-    if (!in_impl_uuid || *in_impl_uuid != getEffectImplUuidAxionFx()) {
+    if (!in_impl_uuid || *in_impl_uuid != ::getEffectImplUuidAxionFx()) {
         LOG(ERROR) << __func__ << " uuid not supported";
         return EX_ILLEGAL_ARGUMENT;
     }
@@ -70,8 +96,8 @@ namespace aidl::android::hardware::audio::effect {
 const std::string AxionFxEffect::kEffectName = "AxionFx";
 
 const Descriptor AxionFxEffect::kDescriptor = {
-        .common = {.id = {.type = getEffectTypeUuidAxionFx(),
-                          .uuid = getEffectImplUuidAxionFx(),
+        .common = {.id = {.type = ::getEffectTypeUuidAxionFx(),
+                          .uuid = ::getEffectImplUuidAxionFx(),
                           .proxy = std::nullopt},
                    .flags = {.type = Flags::Type::INSERT,
                              .insert = Flags::Insert::LAST,
