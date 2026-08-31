@@ -447,13 +447,25 @@ fun DashboardScreen(
                     )
                 }
                 item {
+                    SwitchPreference(
+                        title = stringResource(R.string.limiter_title),
+                        summary = stringResource(R.string.limiter_summary),
+                        checked = limiterEnabled,
+                        enabled = isActive,
+                        onCheckedChange = {
+                            limiterEnabled = it
+                            fx.setLimiterEnabled(it)
+                        },
+                    )
+                }
+                item {
                     EffectSlider(
                         title = stringResource(R.string.limiter_threshold_title),
                         summary = stringResource(R.string.limiter_threshold_summary),
                         value = limiterThreshold,
                         valueRange = -60f..0f,
                         unit = "dB",
-                        enabled = isActive,
+                        enabled = isActive && limiterEnabled,
                         onValueChange = {
                             limiterThreshold = it
                             fx.setLimiterThreshold(it.toInt())
@@ -709,17 +721,6 @@ fun DashboardScreen(
                         onCheckedChange = {
                             agcEnabled = it
                             fx.setAgcEnabled(it)
-                        },
-                    )
-                }
-                item {
-                    SwitchPreference(
-                        title = stringResource(R.string.limiter_title),
-                        summary = stringResource(R.string.limiter_summary),
-                        checked = limiterEnabled,
-                        onCheckedChange = {
-                            limiterEnabled = it
-                            fx.setLimiterEnabled(it)
                         },
                     )
                 }
