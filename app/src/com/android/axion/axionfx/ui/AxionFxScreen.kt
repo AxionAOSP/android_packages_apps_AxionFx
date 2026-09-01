@@ -32,6 +32,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.runtime.saveable.rememberSaveableStateHolder
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -55,15 +56,18 @@ fun AxionFxScreen(viewModel: AxionFxViewModel) {
     val dashboardScrollState = rememberScrollState()
     val motionScheme = MaterialTheme.motionScheme
     val isDualPane = LocalConfiguration.current.screenWidthDp >= 840
+    val saveableStateHolder = rememberSaveableStateHolder()
 
     if (isDualPane) {
         Row(modifier = Modifier.fillMaxSize()) {
             Box(modifier = Modifier.weight(0.5f)) {
-                DashboardScreen(
-                    viewModel = viewModel,
-                    onNavigate = { currentScreen = it },
-                    scrollState = dashboardScrollState,
-                )
+                saveableStateHolder.SaveableStateProvider(key = "dashboard") {
+                    DashboardScreen(
+                        viewModel = viewModel,
+                        onNavigate = { currentScreen = it },
+                        scrollState = dashboardScrollState,
+                    )
+                }
             }
             VerticalDivider(
                 modifier = Modifier.fillMaxHeight(),
@@ -79,11 +83,9 @@ fun AxionFxScreen(viewModel: AxionFxViewModel) {
                     },
                     label = "detail"
                 ) { screen ->
-                    DetailContent(
-                        screen = screen,
-                        viewModel = viewModel,
-                        onBack = { currentScreen = null },
-                    )
+                    saveableStateHolder.SaveableStateProvider(key = screen ?: "placeholder") {
+                        DetailContent(screen = screen, viewModel = viewModel, onBack = { currentScreen = null })
+                    }
                 }
             }
         }
@@ -103,17 +105,15 @@ fun AxionFxScreen(viewModel: AxionFxViewModel) {
             },
             label = "screen"
         ) { screen ->
-            when (screen) {
-                null -> DashboardScreen(
-                    viewModel = viewModel,
-                    onNavigate = { currentScreen = it },
-                    scrollState = dashboardScrollState,
-                )
-                else -> DetailContent(
-                    screen = screen,
-                    viewModel = viewModel,
-                    onBack = { currentScreen = null },
-                )
+            saveableStateHolder.SaveableStateProvider(key = screen ?: "dashboard") {
+                when (screen) {
+                    null -> DashboardScreen(
+                        viewModel = viewModel,
+                        onNavigate = { currentScreen = it },
+                        scrollState = dashboardScrollState,
+                    )
+                    else -> DetailContent(screen = screen, viewModel = viewModel, onBack = { currentScreen = null })
+                }
             }
         }
     }
