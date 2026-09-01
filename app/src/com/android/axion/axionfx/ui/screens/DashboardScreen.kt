@@ -126,7 +126,7 @@ fun DashboardScreen(
     var surroundWidth by remember { mutableFloatStateOf(viewModel.loadInt(EffectKeys.SURROUND_WIDTH, EffectDefaults.SURROUND_WIDTH).toFloat()) }
     var spatialBlend by remember { mutableFloatStateOf(viewModel.loadInt(EffectKeys.SPATIAL_BLEND, EffectDefaults.SPATIAL_BLEND).toFloat()) }
 
-    val activeCount = viewModel.activeEffectCount()
+    val activeCount by viewModel.activeEffectCount.collectAsState()
     val isActive = masterEnabled
 
     LaunchedEffect(Unit) { AxionFxService.primeFromContext(context) }

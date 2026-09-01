@@ -17,6 +17,7 @@
 package com.android.axion.axionfx.ui
 
 import android.content.SharedPreferences
+import androidx.lifecycle.ViewModel
 import android.media.AudioManager
 import android.media.AudioTrack
 import com.android.axion.axionfx.AxionFxController
@@ -24,6 +25,8 @@ import com.android.axion.axionfx.data.EffectRepository
 import com.android.axion.axionfx.domain.EffectDefaults
 import com.android.axion.axionfx.domain.EffectInteractor
 import com.android.axion.axionfx.domain.EffectKeys
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
 
 data class AudioStats(
     val sampleRate: String,
@@ -34,7 +37,7 @@ data class AudioStats(
     val latency: String,
 )
 
-class AxionFxViewModel(prefs: SharedPreferences) {
+class AxionFxViewModel(private val prefs: SharedPreferences) {
 
     val repo = EffectRepository(prefs)
     val interactor = EffectInteractor(repo)
@@ -42,24 +45,38 @@ class AxionFxViewModel(prefs: SharedPreferences) {
     fun loadBoolean(key: String, default: Boolean): Boolean = repo.getBoolean(key, default)
     fun loadInt(key: String, default: Int): Int = repo.getInt(key, default)
 
-    fun activeEffectCount(): Int {
-        return listOf(
-            EffectKeys.BASS_ENABLED,
-            EffectKeys.WIDENER_ENABLED,
-            EffectKeys.REVERB_ENABLED,
-            EffectKeys.COMPRESSOR_ENABLED,
-            EffectKeys.TUBE_ENABLED,
-            EffectKeys.AGC_ENABLED,
-            EffectKeys.CROSSFEED_ENABLED,
-            EffectKeys.SURROUND_ENABLED,
-            EffectKeys.SPATIAL_ENABLED,
-            EffectKeys.LIMITER_ENABLED,
-            EffectKeys.EQ_ENABLED,
-            EffectKeys.FIR_EQ_ENABLED,
-            EffectKeys.EXCITER_ENABLED,
-            EffectKeys.MCOMP_ENABLED,
-        ).count { repo.getBoolean(it, false) }
+    private val effectKeys = listOf(
+        EffectKeys.BASS_ENABLED,
+        EffectKeys.WIDENER_ENABLED,
+        EffectKeys.REVERB_ENABLED,
+        EffectKeys.COMPRESSOR_ENABLED,
+        EffectKeys.TUBE_ENABLED,
+        EffectKeys.AGC_ENABLED,
+        EffectKeys.CROSSFEED_ENABLED,
+        EffectKeys.SURROUND_ENABLED,
+        EffectKeys.SPATIAL_ENABLED,
+        EffectKeys.LIMITER_ENABLED,
+        EffectKeys.EQ_ENABLED,
+        EffectKeys.FIR_EQ_ENABLED,
+        EffectKeys.EXCITER_ENABLED,
+        EffectKeys.MCOMP_ENABLED,
+    )
+
+    private val _activeEffectCount = MutableStateFlow(computeActiveEffectCount())
+    val activeEffectCount: StateFlow<Int> = _activeEffectCount
+
+    private val prefsListener = SharedPreferences.OnSharedPreferenceChangeListener { _, key ->
+        if (key in effectKeys) {
+            _activeEffectCount.value = computeActiveEffectCount()
+        }
     }
+
+    init {
+        prefs.registerOnSharedPreferenceChangeListener(prefsListener)
+    }
+
+    private fun computeActiveEffectCount(): Int =
+        effectKeys.count { repo.getBoolean(it, false) }
 
     fun getAudioStats(): AudioStats {
         val nativeSr = AudioTrack.getNativeOutputSampleRate(AudioManager.STREAM_MUSIC)
