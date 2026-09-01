@@ -81,6 +81,7 @@ import com.android.axion.compose.preferences.ClickablePreference
 import com.android.axion.compose.preferences.ListPreference
 import com.android.axion.compose.preferences.PreferenceGroup
 import com.android.axion.compose.preferences.SwitchPreference
+import com.android.axion.compose.preferences.PrimarySwitchPreference
 
 @Composable
 fun DashboardScreen(
@@ -125,6 +126,13 @@ fun DashboardScreen(
     var surroundDelay by remember { mutableFloatStateOf(viewModel.loadInt(EffectKeys.SURROUND_DELAY, EffectDefaults.SURROUND_DELAY).toFloat()) }
     var surroundWidth by remember { mutableFloatStateOf(viewModel.loadInt(EffectKeys.SURROUND_WIDTH, EffectDefaults.SURROUND_WIDTH).toFloat()) }
     var spatialBlend by remember { mutableFloatStateOf(viewModel.loadInt(EffectKeys.SPATIAL_BLEND, EffectDefaults.SPATIAL_BLEND).toFloat()) }
+
+    // Hoisted variables that were previously local to sub-screens
+    var equalizerEnabled by remember { mutableStateOf(viewModel.loadBoolean(EffectKeys.EQ_ENABLED, EffectDefaults.EQ_ENABLED)) }
+    var firEqualizerEnabled by remember { mutableStateOf(viewModel.loadBoolean(EffectKeys.FIR_EQ_ENABLED, EffectDefaults.FIR_EQ_ENABLED)) }
+    var multiBandCompressorEnabled by remember { mutableStateOf(viewModel.loadBoolean(EffectKeys.MCOMP_ENABLED, EffectDefaults.MCOMP_ENABLED)) }
+    var convolverEnabled by remember { mutableStateOf(viewModel.loadBoolean(EffectKeys.CONVOLVER_ENABLED, EffectDefaults.CONVOLVER_ENABLED)) }
+    var exciterEnabled by remember { mutableStateOf(viewModel.loadBoolean(EffectKeys.EXCITER_ENABLED, EffectDefaults.EXCITER_ENABLED)) }
 
     val activeCount by viewModel.activeEffectCount.collectAsState()
     val isActive = masterEnabled
@@ -483,34 +491,54 @@ fun DashboardScreen(
 
             PreferenceGroup(title = stringResource(R.string.category_effects), collapsible = true, initiallyExpanded = false) {
                 item {
-                    ClickablePreference(
+                    PrimarySwitchPreference(
                         title = stringResource(R.string.nav_equalizer),
                         summary = stringResource(R.string.nav_equalizer_summary),
                         icon = Icons.Rounded.GraphicEq,
+                        checked = equalizerEnabled,
+                        onCheckedChange = {
+                            equalizerEnabled = it
+                            viewModel.interactor.setEqEnabled(it)
+                        },
                         onClick = { onNavigate("equalizer") },
                     )
                 }
                 item {
-                    ClickablePreference(
+                    PrimarySwitchPreference(
                         title = stringResource(R.string.nav_fir_eq),
                         summary = stringResource(R.string.nav_fir_eq_summary),
                         icon = Icons.Rounded.Tune,
+                        checked = firEqualizerEnabled,
+                        onCheckedChange = {
+                            firEqualizerEnabled = it
+                            viewModel.interactor.setFirEqEnabled(it)
+                        },
                         onClick = { onNavigate("fir_eq") },
                     )
                 }
                 item {
-                    ClickablePreference(
+                    PrimarySwitchPreference(
                         title = stringResource(R.string.nav_multiband),
                         summary = stringResource(R.string.nav_multiband_summary),
                         icon = Icons.Rounded.Equalizer,
+                        checked = multiBandCompressorEnabled,
+                        onCheckedChange = {
+                            multiBandCompressorEnabled = it
+                            viewModel.interactor.setMCompEnabled(it)
+                        },
                         onClick = { onNavigate("multiband") },
                     )
                 }
                 item {
-                    ClickablePreference(
+                    PrimarySwitchPreference(
                         title = stringResource(R.string.nav_convolver),
                         summary = stringResource(R.string.nav_convolver_summary),
                         icon = Icons.Rounded.Memory,
+                        checked = convolverEnabled,
+                        onCheckedChange = {
+                            convolverEnabled = it
+                            viewModel.interactor.setConvolverEnabled(it)
+                        },
                         onClick = { onNavigate("convolver") },
                     )
                 }
@@ -811,9 +839,14 @@ fun DashboardScreen(
                     )
                 }
                 item {
-                    ClickablePreference(
+                    PrimarySwitchPreference(
                         title = stringResource(R.string.exciter_nav_title),
                         summary = stringResource(R.string.exciter_nav_summary),
+                        checked = exciterEnabled,
+                        onCheckedChange = {
+                            exciterEnabled = it
+                            viewModel.interactor.setExciterEnabled(it)
+                        },
                         onClick = { onNavigate("exciter") },
                     )
                 }
