@@ -45,13 +45,8 @@ class AxionFxTileService : TileService() {
         interactor.setMasterEnabled(newState)
         AxionFxService.updateMasterEnabledFlow(newState)
 
-        if (newState) {
-            if (AxionFxService.instance == null) {
-                AxionFxService.start(this)
-            }
-        } else {
-            AxionFxService.stop(this)
-        }
+        AxionFxService.start(this)
+
         updateTile()
     }
 

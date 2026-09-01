@@ -385,7 +385,9 @@ fun DashboardScreen(
                         onCheckedChange = {
                             fx.setMasterEnabled(it)
                             AxionFxService.updateMasterEnabledFlow(it)
-                            if (it) AxionFxService.start(context) else AxionFxService.stop(context)
+                            viewModel.repo.prefs.edit()
+                                .putBoolean(AxionFxService.KEY_MASTER_ENABLED, it)
+                                .apply()
                         },
                     )
                 }

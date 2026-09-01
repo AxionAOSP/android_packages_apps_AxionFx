@@ -69,8 +69,6 @@ class AxionFxService : Service() {
         prefs = getPrefs(this)
         createNotificationChannel()
         startForeground(NOTIFICATION_ID, buildNotification())
-        AxionFxController.attachSession(0)
-        restoreSettings()
         _autoSwitchEnabled.value = prefs.getBoolean(KEY_AUTO_SWITCH, true)
         audioManager?.registerAudioDeviceCallback(deviceCallback, routingHandler)
         scheduleRoutingEval()
@@ -85,12 +83,8 @@ class AxionFxService : Service() {
                 return START_NOT_STICKY
             }
         }
-        val masterEnabled = prefs.getBoolean(KEY_MASTER_ENABLED, true)
-        if (!masterEnabled) {
-            stopForeground(STOP_FOREGROUND_REMOVE)
-            stopSelf()
-            return START_NOT_STICKY
-        }
+        AxionFxController.attachSession(0)
+        restoreSettings()
         return START_STICKY
     }
 
@@ -318,9 +312,6 @@ class AxionFxService : Service() {
         }
 
         fun start(context: Context) {
-            val prefs = getPrefs(context)
-            val masterEnabled = prefs.getBoolean(KEY_MASTER_ENABLED, true)
-            if (!masterEnabled) return
             context.startForegroundService(Intent(context, AxionFxService::class.java))
         }
 
