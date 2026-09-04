@@ -248,6 +248,7 @@
     <string name="reset_confirm">Reset</string>
     <string name="reset_cancel">Cancel</string>
 
+    <string name="stat_bt_codec">Codec</string>
     <string name="stat_sample_rate">Sample Rate</string>
     <string name="stat_buffer_size">Buffer Size</string>
     <string name="stat_channels">Channels</string>

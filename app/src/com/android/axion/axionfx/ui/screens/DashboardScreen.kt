@@ -66,6 +66,7 @@ import androidx.compose.ui.unit.dp
 import com.android.axion.axionfx.R
 import androidx.compose.ui.platform.LocalContext
 import com.android.axion.axionfx.AxionFxController
+import com.android.axion.axionfx.device.DeviceCategory
 import com.android.axion.axionfx.device.DeviceProfile
 import com.android.axion.axionfx.device.DeviceProfileManager
 import com.android.axion.axionfx.domain.EffectDefaults
@@ -158,6 +159,16 @@ fun DashboardScreen(
         animationSpec = motionScheme.defaultEffectsSpec(),
         label = "statusColor"
     )
+
+    var bluetoothCodec by remember { mutableStateOf<String?>(null) }
+
+    LaunchedEffect(deviceCategory) {
+        if (deviceCategory == DeviceCategory.BLUETOOTH) { 
+            DeviceCategory.getActiveA2dpCodecName(context) { codec -> bluetoothCodec = codec }
+        } else {
+            bluetoothCodec = null
+        }
+    }
 
     var showResetDialog by remember { mutableStateOf(false) }
     if (showResetDialog) {
@@ -371,6 +382,9 @@ fun DashboardScreen(
                                 color = contentColor.copy(alpha = 0.15f),
                                 modifier = Modifier.padding(bottom = 8.dp),
                             )
+                            bluetoothCodec?.let { codec ->
+                                AudioStatRow(stringResource(R.string.stat_bt_codec), codec, contentColor)
+                            }
                             AudioStatRow(stringResource(R.string.stat_sample_rate), audioStats.sampleRate, contentColor)
                             AudioStatRow(stringResource(R.string.stat_buffer_size), audioStats.bufferSize, contentColor)
                             AudioStatRow(stringResource(R.string.stat_channels), audioStats.channels, contentColor)

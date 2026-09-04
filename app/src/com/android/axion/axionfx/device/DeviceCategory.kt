@@ -16,6 +16,11 @@
 
 package com.android.axion.axionfx.device
 
+import android.bluetooth.BluetoothA2dp
+import android.bluetooth.BluetoothAdapter
+import android.bluetooth.BluetoothCodecConfig
+import android.bluetooth.BluetoothManager
+import android.bluetooth.BluetoothProfile
 import android.content.Context
 import android.media.AudioAttributes
 import android.media.AudioDeviceInfo
@@ -55,6 +60,46 @@ enum class DeviceCategory(val prefKey: String) {
             AudioDeviceInfo.TYPE_USB_ACCESSORY -> USB
 
             else -> OTHER
+        }
+
+        fun getActiveA2dpCodecName(context: Context, onResult: (String?) -> Unit) {
+            val adapter = context.getSystemService(BluetoothManager::class.java)?.adapter
+                ?: BluetoothAdapter.getDefaultAdapter()
+            if (adapter == null) {
+                onResult(null)
+                return
+            }
+
+            adapter.getProfileProxy(context, object : BluetoothProfile.ServiceListener {
+                override fun onServiceConnected(profile: Int, proxy: BluetoothProfile) {
+                    if (profile == BluetoothProfile.A2DP) {
+                        val a2dp = proxy as BluetoothA2dp
+                        val device = a2dp.connectedDevices.firstOrNull()
+                        val codecStatus = device?.let { a2dp.getCodecStatus(it) }
+
+                        val codecName = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.UPSIDE_DOWN_CAKE) {
+                            codecStatus?.codecConfig?.extendedCodecType?.codecName
+                        } else {
+                            codecStatus?.codecConfig?.let { config ->
+                                @Suppress("DEPRECATION")
+                                when (config.codecType) {
+                                    BluetoothCodecConfig.SOURCE_CODEC_TYPE_SBC -> "SBC"
+                                    BluetoothCodecConfig.SOURCE_CODEC_TYPE_AAC -> "AAC"
+                                    BluetoothCodecConfig.SOURCE_CODEC_TYPE_APTX -> "aptX"
+                                    BluetoothCodecConfig.SOURCE_CODEC_TYPE_APTX_HD -> "aptX HD"
+                                    BluetoothCodecConfig.SOURCE_CODEC_TYPE_LDAC -> "LDAC"
+                                    BluetoothCodecConfig.SOURCE_CODEC_TYPE_OPUS -> "Opus"
+                                    else -> "Unknown"
+                                }
+                            }
+                        }
+
+                        adapter.closeProfileProxy(BluetoothProfile.A2DP, proxy)
+                        onResult(codecName)
+                    }
+                }
+                override fun onServiceDisconnected(profile: Int) {}
+            }, BluetoothProfile.A2DP)
         }
 
         fun activeOutputCategory(context: Context): DeviceCategory =
