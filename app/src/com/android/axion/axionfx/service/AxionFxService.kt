@@ -27,9 +27,11 @@ import android.content.SharedPreferences
 import android.media.AudioDeviceCallback
 import android.media.AudioDeviceInfo
 import android.media.AudioManager
+import android.media.AudioPlaybackConfiguration
 import android.os.Handler
 import android.os.HandlerThread
 import android.os.IBinder
+import android.os.Looper
 import android.util.Log
 import com.android.axion.axionfx.AxionFxActivity
 import com.android.axion.axionfx.R
@@ -63,6 +65,12 @@ class AxionFxService : Service() {
         }
     }
 
+    private val audioPlaybackCallback = object : AudioManager.AudioPlaybackCallback() {
+        override fun onPlaybackConfigChanged(configs: MutableList<AudioPlaybackConfiguration>?) {
+            scheduleRoutingEval()
+        }
+    }
+
     override fun onCreate() {
         super.onCreate()
         instance = this
@@ -71,6 +79,7 @@ class AxionFxService : Service() {
         startForeground(NOTIFICATION_ID, buildNotification())
         _autoSwitchEnabled.value = prefs.getBoolean(KEY_AUTO_SWITCH, true)
         audioManager?.registerAudioDeviceCallback(deviceCallback, routingHandler)
+        audioManager?.registerAudioPlaybackCallback(audioPlaybackCallback, Handler(Looper.getMainLooper()))
         scheduleRoutingEval()
     }
 
@@ -93,6 +102,7 @@ class AxionFxService : Service() {
     override fun onDestroy() {
         instance = null
         audioManager?.unregisterAudioDeviceCallback(deviceCallback)
+        audioManager?.unregisterAudioPlaybackCallback(audioPlaybackCallback)
         routingHandler.removeCallbacks(evalRunnable)
         routingThread.quitSafely()
         AxionFxController.releaseAll()
