@@ -98,6 +98,7 @@ fun DashboardScreen(
 
     val context = LocalContext.current
     val fx = viewModel.interactor
+    val chainHealthy by AxionFxService.chainHealthyFlow.collectAsState()
     val masterEnabled by AxionFxService.masterEnabledFlow.collectAsState()
     var outputGain by remember { mutableFloatStateOf(viewModel.loadInt(EffectKeys.OUTPUT_GAIN, EffectDefaults.OUTPUT_GAIN).toFloat()) }
 
@@ -291,7 +292,8 @@ fun DashboardScreen(
                         Spacer(modifier = Modifier.width(16.dp))
                         Column(modifier = Modifier.weight(1f)) {
                             Text(
-                                text = if (isActive) stringResource(R.string.status_active)
+                                text = if (isActive && !chainHealthy) stringResource(R.string.status_detached) 
+                                    else if (chainHealthy) stringResource(R.string.status_active)
                                     else stringResource(R.string.status_disabled),
                                 style = MaterialTheme.typography.titleMedium,
                                 color = contentColor,

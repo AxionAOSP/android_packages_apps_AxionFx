@@ -60,6 +60,7 @@ void AxionFxEngine::configure(float sampleRate) {
 }
 
 void AxionFxEngine::process(float* in, float* out, int samples) {
+    mProcessCallCount.fetch_add(1, std::memory_order_relaxed);
     if (!mMasterEnabled) {
         if (in != out) {
             std::memcpy(out, in, samples * sizeof(float));
@@ -409,6 +410,8 @@ int32_t AxionFxEngine::getParameter(int32_t paramId) const {
             return mFirEq.isEnabled() ? 1 : 0;
         case PARAM_SPATIAL_ENABLE:
             return mSteamSpatial.isEnabled() ? 1 : 0;
+        case PARAM_PROCESS_CALL_COUNT:
+            return static_cast<int32_t>(mProcessCallCount.load(std::memory_order_relaxed));
         default:
             return 0;
     }

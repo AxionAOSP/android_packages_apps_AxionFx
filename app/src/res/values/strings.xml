@@ -22,6 +22,8 @@
 
     <!-- Status -->
     <string name="status_active">Processing Active</string>
+    <string name="status_detached">Enabled, not processing</string>
+
     <string name="status_disabled">Disabled</string>
     <string name="status_media_only">Media-Only Mode</string>
     <string name="status_effects_active">%1$d effects active \u2022 %2$d%% gain</string>
@@ -240,6 +242,8 @@
     <string name="notification_text">Audio processing active</string>
     <string name="notification_title_idle">AxionFx — Standby</string>
     <string name="notification_text_idle">Waiting for media playback</string>
+    <string name="notification_text_not_processing">Audio processing inactive</string>
+
 
     <!-- Power notice -->
     <string name="power_notice">Audio processing uses additional CPU during playback. Disable unused effects to conserve battery.</string>

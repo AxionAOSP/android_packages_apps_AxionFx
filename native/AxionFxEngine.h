@@ -32,6 +32,7 @@
 #include "effects/Exciter.h"
 #include "effects/FirEqualizer.h"
 #include "effects/SteamSpatial.h"
+#include <atomic>
 
 namespace axionfx {
 
@@ -50,6 +51,7 @@ public:
     bool loadIrFromData(const uint8_t* data, size_t size);
 
 private:
+    std::atomic<uint64_t> mProcessCallCount{0};
     bool mMasterEnabled = false;
     float mSampleRate = 48000.0f;
     float mOutputGain = 1.0f;

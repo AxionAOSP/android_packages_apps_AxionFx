@@ -39,10 +39,16 @@ import com.android.axion.axionfx.AxionFxController
 import com.android.axion.axionfx.device.DeviceCategory
 import com.android.axion.axionfx.device.DeviceProfile
 import com.android.axion.axionfx.device.DeviceProfileManager
-import java.util.concurrent.Executor
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.SupervisorJob
+import kotlinx.coroutines.cancel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.combine
+import kotlinx.coroutines.flow.distinctUntilChanged
+import kotlinx.coroutines.launch
 
 class AxionFxService : Service() {
 
@@ -52,6 +58,13 @@ class AxionFxService : Service() {
     private val routingHandler = Handler(routingThread.looper)
     private val audioManager by lazy { getSystemService(AudioManager::class.java) }
     private var lastAppliedCategory: DeviceCategory? = null
+
+    private val serviceScope = CoroutineScope(SupervisorJob() + Dispatchers.Main)
+    private val heartbeatMonitor = EffectHeartbeatMonitor(
+        readHeartbeat = { AxionFxController.getParameter(HEARTBEAT_PARAM) }
+    )
+
+    private var lastPlaybackActive = false
 
     private val evalRunnable = Runnable { evaluateRoutingChange() }
 
@@ -68,6 +81,11 @@ class AxionFxService : Service() {
     private val audioPlaybackCallback = object : AudioManager.AudioPlaybackCallback() {
         override fun onPlaybackConfigChanged(configs: MutableList<AudioPlaybackConfiguration>?) {
             scheduleRoutingEval()
+            val isActive = configs?.isNotEmpty() == true
+            if (isActive != lastPlaybackActive) {
+                lastPlaybackActive = isActive
+                onPlaybackActivityChanged(isActive)
+            }
         }
     }
 
@@ -76,10 +94,28 @@ class AxionFxService : Service() {
         instance = this
         prefs = getPrefs(this)
         createNotificationChannel()
-        startForeground(NOTIFICATION_ID, buildNotification())
+        startForeground(NOTIFICATION_ID, buildNotification(_masterEnabled.value, _chainHealthyFlow.value))
         _autoSwitchEnabled.value = prefs.getBoolean(KEY_AUTO_SWITCH, true)
         audioManager?.registerAudioDeviceCallback(deviceCallback, routingHandler)
         audioManager?.registerAudioPlaybackCallback(audioPlaybackCallback, Handler(Looper.getMainLooper()))
+        lastPlaybackActive = audioManager?.activePlaybackConfigurations?.isNotEmpty() == true
+        _mediaPlaying.value = lastPlaybackActive
+        if (lastPlaybackActive) heartbeatMonitor.onPlaybackStarted()
+
+        serviceScope.launch {
+            combine(_masterEnabled, _chainHealthyFlow) { enabled, healthy -> enabled to healthy }
+                .distinctUntilChanged()
+                .collect {
+                    updateNotification()
+                }
+        }
+
+        serviceScope.launch {
+            heartbeatMonitor.isHealthy.collect { healthy ->
+                _chainHealthyFlow.value = healthy
+            }
+        }
+
         scheduleRoutingEval()
     }
 
@@ -105,8 +141,20 @@ class AxionFxService : Service() {
         audioManager?.unregisterAudioPlaybackCallback(audioPlaybackCallback)
         routingHandler.removeCallbacks(evalRunnable)
         routingThread.quitSafely()
+        heartbeatMonitor.stop()
+        serviceScope.cancel()
         AxionFxController.releaseAll()
         super.onDestroy()
+    }
+
+    private fun onPlaybackActivityChanged(isActive: Boolean) {
+        Log.d(TAG, "Playback activity changed: active=$isActive")
+        _mediaPlaying.value = isActive
+        if (isActive) {
+            heartbeatMonitor.onPlaybackStarted()
+        } else {
+            heartbeatMonitor.onPlaybackStopped()
+        }
     }
 
     fun setAutoSwitchEnabled(enabled: Boolean) {
@@ -237,28 +285,40 @@ class AxionFxService : Service() {
         getSystemService(NotificationManager::class.java).createNotificationChannel(channel)
     }
 
-    private fun buildNotification(active: Boolean = true): Notification {
+    private fun buildNotification(masterEnabled: Boolean, chainHealthy: Boolean): Notification {
         val tapIntent = PendingIntent.getActivity(
             this, 0,
             Intent(this, AxionFxActivity::class.java),
             PendingIntent.FLAG_IMMUTABLE or PendingIntent.FLAG_UPDATE_CURRENT
         )
-        val title = if (active) getString(R.string.notification_title)
-            else getString(R.string.notification_title_idle)
-        val text = if (active) getString(R.string.notification_text)
-            else getString(R.string.notification_text_idle)
+        val title: String
+        val text: String
+        when {
+            !masterEnabled -> {
+                title = getString(R.string.notification_title_idle)
+                text = getString(R.string.notification_text_idle)
+            }
+            !chainHealthy -> {
+                title = getString(R.string.notification_title_idle)
+                text = getString(R.string.notification_text_not_processing)
+            }
+            else -> {
+                title = getString(R.string.notification_title)
+                text = getString(R.string.notification_text)
+            }
+        }
         return Notification.Builder(this, CHANNEL_ID)
             .setSmallIcon(android.R.drawable.ic_media_play)
             .setContentTitle(title)
             .setContentText(text)
             .setContentIntent(tapIntent)
-            .setOngoing(active)
+            .setOngoing(masterEnabled)
             .build()
     }
 
-    private fun updateNotification(active: Boolean) {
+    private fun updateNotification() {
         val nm = getSystemService(NotificationManager::class.java)
-        nm.notify(NOTIFICATION_ID, buildNotification(active))
+        nm.notify(NOTIFICATION_ID, buildNotification(_masterEnabled.value, _chainHealthyFlow.value))
     }
 
     companion object {
@@ -292,21 +352,30 @@ class AxionFxService : Service() {
         const val KEY_AUTO_SWITCH = "device_profile_auto_switch"
         private const val TAG = "AxionFxService"
         private const val ROUTING_DEBOUNCE_MS = 250L
+        private const val HEARTBEAT_PARAM = 0x103
 
         private const val ACTION_STOP = "com.android.axion.axionfx.STOP"
         internal var instance: AxionFxService? = null
         private val _mediaPlaying = MutableStateFlow(false)
         val mediaPlayingFlow: StateFlow<Boolean> = _mediaPlaying.asStateFlow()
+
         private val _currentDeviceCategory = MutableStateFlow(DeviceCategory.SPEAKER)
         val currentDeviceCategoryFlow: StateFlow<DeviceCategory> = _currentDeviceCategory.asStateFlow()
+
         private val _currentDeviceName = MutableStateFlow<String?>(null)
         val currentDeviceNameFlow: StateFlow<String?> = _currentDeviceName.asStateFlow()
+
         private val _appliedPresetName = MutableStateFlow<String?>(null)
         val appliedPresetNameFlow: StateFlow<String?> = _appliedPresetName.asStateFlow()
+
         private val _autoSwitchEnabled = MutableStateFlow(true)
         val autoSwitchEnabledFlow: StateFlow<Boolean> = _autoSwitchEnabled.asStateFlow()
+
         private val _masterEnabled = MutableStateFlow(true)
         val masterEnabledFlow: StateFlow<Boolean> = _masterEnabled.asStateFlow()
+
+        private val _chainHealthyFlow = MutableStateFlow(true)
+        val chainHealthyFlow: StateFlow<Boolean> = _chainHealthyFlow.asStateFlow()
 
         internal fun updateMasterEnabledFlow(enabled: Boolean) {
             _masterEnabled.value = enabled
