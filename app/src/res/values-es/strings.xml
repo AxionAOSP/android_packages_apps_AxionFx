@@ -17,26 +17,26 @@
 <resources>
     <string name="app_name">AxionFx</string>
     <string name="mode_off">Desactivadas</string>
-    <string name="mode_on">Always On</string>
-    <string name="mode_media">Media Only</string>
+    <string name="mode_on">Siempre encendido</string>
+    <string name="mode_media">Solo multimedia</string>
     <!-- Status -->
-    <string name="status_active">Processing Active</string>
-    <string name="status_detached">Enabled, not processing</string>
+    <string name="status_active">Procesado Activo</string>
+    <string name="status_detached">Habilitado, sin procesamiento</string>
     <string name="status_disabled">Deshabilitado</string>
-    <string name="status_media_only">Media-Only Mode</string>
-    <string name="status_effects_active">%1$d effects active \u2022 %2$d%% gain</string>
-    <string name="status_tap_to_enable">Tap master switch to enable</string>
+    <string name="status_media_only">Modo solo multimedia</string>
+    <string name="status_effects_active">%1$d efectos activos \u2022 %2$d%% ganancia</string>
+    <string name="status_tap_to_enable">Pulse el interruptor maestro para activar</string>
     <!-- Master -->
-    <string name="category_master">Master Limiter</string>
-    <string name="master_enable_title">Enable AxionFx</string>
-    <string name="master_enable_summary">Global audio processing engine</string>
-    <string name="media_only_title">Media-only mode</string>
-    <string name="media_only_summary">Only process audio during media playback</string>
-    <string name="output_gain_title">Output Gain</string>
-    <string name="output_gain_summary">Volume boost/cut</string>
+    <string name="category_master">Limite maestro</string>
+    <string name="master_enable_title">Habilitar AxionFx</string>
+    <string name="master_enable_summary">Motor de procesamiento global de audio</string>
+    <string name="media_only_title">Modo solo multimedia</string>
+    <string name="media_only_summary">Solo procesar audio durante la reproducción de medios</string>
+    <string name="output_gain_title">Ganancia de salida</string>
+    <string name="output_gain_summary">Aumentar/cortar volumen</string>
     <string name="output_pan_title">Output Balance</string>
-    <string name="output_pan_summary">Left/right balance</string>
-    <string name="limiter_threshold_title">Limiter Threshold</string>
+    <string name="output_pan_summary">Balance izquierdo/derecho</string>
+    <string name="limiter_threshold_title">Límite de umbral</string>
     <string name="limiter_threshold_summary">Limiter ceiling level</string>
     <string name="surround_delay_title">Surround Delay</string>
     <string name="surround_delay_summary">Haas effect timing</string>
