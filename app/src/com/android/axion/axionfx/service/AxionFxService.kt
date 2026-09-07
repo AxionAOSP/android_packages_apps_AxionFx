@@ -294,13 +294,17 @@ class AxionFxService : Service() {
         val title: String
         val text: String
         when {
+            !masterEnabled && !chainHealthy -> {
+                title = getString(R.string.notification_title_idle)
+                text = getString(R.string.notification_text_not_processing)  
+            }
             !masterEnabled -> {
                 title = getString(R.string.notification_title_idle)
-                text = getString(R.string.notification_text_idle)
+                text = getString(R.string.notification_text_not_processing)
             }
             !chainHealthy -> {
-                title = getString(R.string.notification_title_idle)
-                text = getString(R.string.notification_text_not_processing)
+                title = getString(R.string.notification_title)
+                text = getString(R.string.notification_text_idle)
             }
             else -> {
                 title = getString(R.string.notification_title)
