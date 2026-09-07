@@ -293,7 +293,7 @@ fun DashboardScreen(
                         Column(modifier = Modifier.weight(1f)) {
                             Text(
                                 text = if (isActive && !chainHealthy) stringResource(R.string.status_detached) 
-                                    else if (chainHealthy) stringResource(R.string.status_active)
+                                    else if (isActive && chainHealthy) stringResource(R.string.status_active)
                                     else stringResource(R.string.status_disabled),
                                 style = MaterialTheme.typography.titleMedium,
                                 color = contentColor,
