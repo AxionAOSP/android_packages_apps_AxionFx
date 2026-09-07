@@ -104,10 +104,12 @@ class AxionFxService : Service() {
 
         serviceScope.launch {
             combine(_masterEnabled, _chainHealthyFlow) { enabled, healthy -> enabled to healthy }
-                .distinctUntilChanged()
-                .collect {
+            .collect { (enabled, healthy) ->
+                val suppressed = !enabled && !isNotificationActive()
+                if (!suppressed) {
                     updateNotification()
                 }
+            }
         }
 
         serviceScope.launch {
@@ -323,6 +325,11 @@ class AxionFxService : Service() {
     private fun updateNotification() {
         val nm = getSystemService(NotificationManager::class.java)
         nm.notify(NOTIFICATION_ID, buildNotification(_masterEnabled.value, _chainHealthyFlow.value))
+    }
+
+    private fun isNotificationActive(): Boolean {
+        val nm = getSystemService(NotificationManager::class.java)
+        return nm.activeNotifications.any { it.id == NOTIFICATION_ID }
     }
 
     companion object {
