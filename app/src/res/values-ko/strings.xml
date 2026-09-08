@@ -21,6 +21,7 @@
     <string name="mode_media">미디어만</string>
     <!-- Status -->
     <string name="status_active">오디오 처리 활성화됨</string>
+    <string name="status_detached">Enabled, not processing</string>
     <string name="status_disabled">사용 안 함</string>
     <string name="status_media_only">미디어 전용 모드</string>
     <string name="status_effects_active">%1$d개의 효과 활성화됨 \u2022 %2$d 부스트</string>
@@ -226,12 +227,14 @@
     <string name="notification_text">오디오 처리 활성화됨</string>
     <string name="notification_title_idle">AxionFx - 대기</string>
     <string name="notification_text_idle">미디어 재생을 기다리는 중</string>
+    <string name="notification_text_not_processing">Audio processing inactive</string>
     <!-- Power notice -->
     <string name="power_notice">오디오 처리는 재생 중에 추가 CPU를 사용합니다. 배터리를 절약하려면 사용하지 않는 효과를 끄세요.</string>
     <string name="reset_dialog_title">모든 효과를 초기화할까요?</string>
     <string name="reset_dialog_message">모든 효과가 기본 설정으로 초기화됩니다.</string>
     <string name="reset_confirm">Reset</string>
     <string name="reset_cancel">취소</string>
+    <string name="stat_bt_codec">Codec</string>
     <string name="stat_sample_rate">샘플레이트</string>
     <string name="stat_buffer_size">버퍼 크기</string>
     <string name="stat_channels">채널</string>

@@ -21,6 +21,7 @@
     <string name="mode_media">Лише медіа</string>
     <!-- Status -->
     <string name="status_active">Обробляється</string>
+    <string name="status_detached">Enabled, not processing</string>
     <string name="status_disabled">Вимкнено</string>
     <string name="status_media_only">Режим «Тільки медіа»</string>
     <string name="status_effects_active">Активно ефектів: %1$d \u2022 приріст %2$d%%</string>
@@ -226,12 +227,14 @@
     <string name="notification_text">Обробка аудіо ввімкнена</string>
     <string name="notification_title_idle">AxionFx — Режим очікування</string>
     <string name="notification_text_idle">Очікування відтворення медіафайлів</string>
+    <string name="notification_text_not_processing">Audio processing inactive</string>
     <!-- Power notice -->
     <string name="power_notice">Обробка аудіо споживає додаткові ресурси ЦП під час відтворення. Вимкніть невикористовувані ефекти, щоб заощадити заряд акумулятора.</string>
     <string name="reset_dialog_title">Скинути всі ефекти?</string>
     <string name="reset_dialog_message">Це відновить усі аудіоефекти до їхніх типових налаштувань.</string>
     <string name="reset_confirm">Скинути</string>
     <string name="reset_cancel">Скасувати</string>
+    <string name="stat_bt_codec">Codec</string>
     <string name="stat_sample_rate">Частота дискретизації</string>
     <string name="stat_buffer_size">Розмір буфера</string>
     <string name="stat_channels">Канали</string>

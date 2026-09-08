@@ -17,25 +17,26 @@
 <resources>
     <string name="app_name">AxionFx</string>
     <string name="mode_off">Desactivadas</string>
-    <string name="mode_on">Always On</string>
-    <string name="mode_media">Media Only</string>
+    <string name="mode_on">Siempre encendido</string>
+    <string name="mode_media">Solo multimedia</string>
     <!-- Status -->
-    <string name="status_active">Processing Active</string>
+    <string name="status_active">Procesado Activo</string>
+    <string name="status_detached">Habilitado, sin procesamiento</string>
     <string name="status_disabled">Deshabilitado</string>
-    <string name="status_media_only">Media-Only Mode</string>
-    <string name="status_effects_active">%1$d effects active \u2022 %2$d%% gain</string>
-    <string name="status_tap_to_enable">Tap master switch to enable</string>
+    <string name="status_media_only">Modo solo multimedia</string>
+    <string name="status_effects_active">%1$d efectos activos \u2022 %2$d%% ganancia</string>
+    <string name="status_tap_to_enable">Pulse el interruptor maestro para activar</string>
     <!-- Master -->
-    <string name="category_master">Master Limiter</string>
-    <string name="master_enable_title">Enable AxionFx</string>
-    <string name="master_enable_summary">Global audio processing engine</string>
-    <string name="media_only_title">Media-only mode</string>
-    <string name="media_only_summary">Only process audio during media playback</string>
-    <string name="output_gain_title">Output Gain</string>
-    <string name="output_gain_summary">Volume boost/cut</string>
+    <string name="category_master">Limite maestro</string>
+    <string name="master_enable_title">Habilitar AxionFx</string>
+    <string name="master_enable_summary">Motor de procesamiento global de audio</string>
+    <string name="media_only_title">Modo solo multimedia</string>
+    <string name="media_only_summary">Solo procesar audio durante la reproducción de medios</string>
+    <string name="output_gain_title">Ganancia de salida</string>
+    <string name="output_gain_summary">Aumentar/cortar volumen</string>
     <string name="output_pan_title">Output Balance</string>
-    <string name="output_pan_summary">Left/right balance</string>
-    <string name="limiter_threshold_title">Limiter Threshold</string>
+    <string name="output_pan_summary">Balance izquierdo/derecho</string>
+    <string name="limiter_threshold_title">Límite de umbral</string>
     <string name="limiter_threshold_summary">Limiter ceiling level</string>
     <string name="surround_delay_title">Surround Delay</string>
     <string name="surround_delay_summary">Haas effect timing</string>
@@ -70,7 +71,7 @@
     <string name="category_surround">Surround Sound</string>
     <string name="category_spatial">Spatial Audio</string>
     <string name="widener_title">Stereo Widener</string>
-    <string name="widener_summary">Expand stereo image</string>
+    <string name="widener_summary">Expandir imagen estéreo</string>
     <string name="widener_width_title">Width</string>
     <string name="widener_width_summary">Stereo width</string>
     <string name="crossfeed_title">Crossfeed</string>
@@ -118,7 +119,14 @@
     <string name="eq_enable_summary">39-node arbitrary response equalizer</string>
     <string name="eq_simple">Simple</string>
     <string name="eq_advanced">Advanced</string>
+    <string name="eq_autoeq_mode">AutoEQ</string>
+    <string name="eq_arbitrary_mode">Arbitrary EQ</string>
+    <string name="eq_arbitrary_title">Arbitrary Response EQ</string>
+    <string name="eq_arbitrary_summary">Draw a 39-node magnitude response, or import an AutoEQ file as a starting point</string>
+    <string name="eq_magnitude_response">Magnitude Response</string>
+    <string name="eq_db_unit">dB</string>
     <string name="eq_reset">Restablecer</string>
+    <string name="eq_smooth_curve">Smooth Curve</string>
     <string name="eq_preset_flat">Flat</string>
     <string name="eq_preset_bass_boost">Bass Boost</string>
     <string name="eq_preset_treble_boost">Treble Boost</string>
@@ -128,6 +136,10 @@
     <string name="eq_label_bass">Bass</string>
     <string name="eq_label_mid">Mid</string>
     <string name="eq_label_treble">Treble</string>
+    <string name="eq_autoeq_import_title">Import AutoEQ File</string>
+    <string name="eq_autoeq_import_summary">Optional: load GraphicEQ or ParametricEQ text into the editable AutoEQ graph</string>
+    <string name="eq_autoeq_import_success">AutoEQ imported</string>
+    <string name="eq_autoeq_import_failed">Unsupported AutoEQ file</string>
     <!-- FIR EQ screen -->
     <string name="fir_eq_screen_title">FIR Equalizer</string>
     <string name="fir_eq_category">Phase-Linear EQ</string>
@@ -204,8 +216,8 @@
     <string name="presets_save_label">Nombre del preajuste</string>
     <string name="presets_save_success">Preset \'%1$s\' saved</string>
     <string name="presets_confirm_delete">Borrar</string>
-    <string name="presets_confirm_rename">Rename</string>
-    <string name="presets_confirm_save">Ahorrar</string>
+    <string name="presets_confirm_rename">Renombrar</string>
+    <string name="presets_confirm_save">Guardar</string>
     <string name="presets_confirm_cancel">Cancelar</string>
     <string name="presets_share_subject">AxionFx Preset: %1$s</string>
     <string name="presets_share_text">Check out my custom AxionFx audio preset: %1$s!</string>
@@ -215,12 +227,14 @@
     <string name="notification_text">Audio processing active</string>
     <string name="notification_title_idle">AxionFx — Standby</string>
     <string name="notification_text_idle">Waiting for media playback</string>
+    <string name="notification_text_not_processing">Audio processing inactive</string>
     <!-- Power notice -->
     <string name="power_notice">Audio processing uses additional CPU during playback. Disable unused effects to conserve battery.</string>
     <string name="reset_dialog_title">Reset all effects?</string>
     <string name="reset_dialog_message">This will restore all audio effects to their default settings.</string>
     <string name="reset_confirm">Restablecer</string>
     <string name="reset_cancel">Cancelar</string>
+    <string name="stat_bt_codec">Codec</string>
     <string name="stat_sample_rate">Sample Rate</string>
     <string name="stat_buffer_size">Buffer Size</string>
     <string name="stat_channels">Channels</string>

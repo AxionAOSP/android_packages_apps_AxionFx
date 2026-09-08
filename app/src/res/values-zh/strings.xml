@@ -21,6 +21,7 @@
     <string name="mode_media">僅媒體</string>
     <!-- Status -->
     <string name="status_active">處理中</string>
+    <string name="status_detached">Enabled, not processing</string>
     <string name="status_disabled">已停用</string>
     <string name="status_media_only">僅媒體模式</string>
     <string name="status_effects_active">%1$d 個效果使用中 \u2022 %2$d%% 增益</string>
@@ -45,7 +46,7 @@
     <!-- Effects navigation -->
     <string name="category_effects">進階效果</string>
     <string name="nav_equalizer">等化器</string>
-    <string name="nav_equalizer_summary">10 段參數等化器</string>
+    <string name="nav_equalizer_summary">39-node arbitrary response equalizer</string>
     <string name="nav_fir_eq">FIR 等化器</string>
     <string name="nav_fir_eq_summary">15 段線性相位等化器</string>
     <string name="nav_multiband">多頻段壓縮器</string>
@@ -115,10 +116,17 @@
     <!-- Equalizer screen -->
     <string name="eq_category">參數等化器</string>
     <string name="eq_enable_title">啟用等化器</string>
-    <string name="eq_enable_summary">10 段參數等化器</string>
+    <string name="eq_enable_summary">39-node arbitrary response equalizer</string>
     <string name="eq_simple">簡易</string>
     <string name="eq_advanced">進階</string>
+    <string name="eq_autoeq_mode">AutoEQ</string>
+    <string name="eq_arbitrary_mode">Arbitrary EQ</string>
+    <string name="eq_arbitrary_title">Arbitrary Response EQ</string>
+    <string name="eq_arbitrary_summary">Draw a 39-node magnitude response, or import an AutoEQ file as a starting point</string>
+    <string name="eq_magnitude_response">Magnitude Response</string>
+    <string name="eq_db_unit">分貝</string>
     <string name="eq_reset">重設</string>
+    <string name="eq_smooth_curve">Smooth Curve</string>
     <string name="eq_preset_flat">平坦</string>
     <string name="eq_preset_bass_boost">重低音</string>
     <string name="eq_preset_treble_boost">高頻增強</string>
@@ -128,6 +136,10 @@
     <string name="eq_label_bass">低音</string>
     <string name="eq_label_mid">中音</string>
     <string name="eq_label_treble">高音</string>
+    <string name="eq_autoeq_import_title">Import AutoEQ File</string>
+    <string name="eq_autoeq_import_summary">Optional: load GraphicEQ or ParametricEQ text into the editable AutoEQ graph</string>
+    <string name="eq_autoeq_import_success">AutoEQ imported</string>
+    <string name="eq_autoeq_import_failed">Unsupported AutoEQ file</string>
     <!-- FIR EQ screen -->
     <string name="fir_eq_screen_title">FIR 等化器</string>
     <string name="fir_eq_category">線性相位等化器</string>
@@ -204,7 +216,7 @@
     <string name="presets_save_label">預設集名稱</string>
     <string name="presets_save_success">預設集「%1$s」已儲存</string>
     <string name="presets_confirm_delete">刪除</string>
-    <string name="presets_confirm_rename">重命名</string>
+    <string name="presets_confirm_rename">重新命名</string>
     <string name="presets_confirm_save">儲存</string>
     <string name="presets_confirm_cancel">取消</string>
     <string name="presets_share_subject">AxionFx 預設集：%1$s</string>
@@ -215,12 +227,14 @@
     <string name="notification_text">音訊處理中</string>
     <string name="notification_title_idle">AxionFx — 待機中</string>
     <string name="notification_text_idle">等待媒體播放</string>
+    <string name="notification_text_not_processing">Audio processing inactive</string>
     <!-- Power notice -->
     <string name="power_notice">音訊處理在播放期間會佔用額外的 CPU 資源。停用未使用的效果可節省電量。</string>
     <string name="reset_dialog_title">重設所有效果？</string>
     <string name="reset_dialog_message">此操作將所有音訊效果還原為預設設定。</string>
     <string name="reset_confirm">重設</string>
     <string name="reset_cancel">取消</string>
+    <string name="stat_bt_codec">Codec</string>
     <string name="stat_sample_rate">取樣率</string>
     <string name="stat_buffer_size">緩衝區大小</string>
     <string name="stat_channels">聲道</string>
