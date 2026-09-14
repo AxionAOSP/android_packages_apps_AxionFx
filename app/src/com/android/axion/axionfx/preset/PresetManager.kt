@@ -118,9 +118,11 @@ object PresetManager {
 
     fun loadPresetFromJson(jsonString: String, prefs: SharedPreferences) {
         val json = JSONObject(jsonString)
+        val masterEnabled = prefs.getBoolean(EffectKeys.MASTER_ENABLED, true)
         val editor = prefs.edit()
 
         for (key in json.keys()) {
+            if (key == EffectKeys.MASTER_ENABLED) continue
             when (val value = json.get(key)) {
                 is Boolean -> editor.putBoolean(key, value)
                 is Int -> editor.putInt(key, value)
@@ -130,6 +132,7 @@ object PresetManager {
             }
         }
 
+        editor.putBoolean(EffectKeys.MASTER_ENABLED, masterEnabled)
         editor.apply()
     }
 
@@ -188,16 +191,18 @@ object PresetManager {
 
     fun loadBuiltinPreset(name: String, prefs: SharedPreferences) {
         val preset = BUILTIN_PRESETS[name] ?: return
+        val masterEnabled = prefs.getBoolean(EffectKeys.MASTER_ENABLED, true)
         val editor = prefs.edit()
         editor.clear()
         for ((key, value) in preset) {
+            if (key == EffectKeys.MASTER_ENABLED) continue
             when (value) {
                 is Boolean -> editor.putBoolean(key, value)
                 is Int -> editor.putInt(key, value)
                 is String -> editor.putString(key, value)
             }
         }
-        editor.putBoolean(EffectKeys.MASTER_ENABLED, true)
+        editor.putBoolean(EffectKeys.MASTER_ENABLED, masterEnabled)
         editor.apply()
         Log.d(TAG, "Loaded builtin preset: $name")
     }
