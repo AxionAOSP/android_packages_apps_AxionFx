@@ -28,6 +28,9 @@ import android.media.AudioDeviceCallback
 import android.media.AudioDeviceInfo
 import android.media.AudioManager
 import android.media.AudioPlaybackConfiguration
+import android.media.audiofx.AudioEffect
+import android.content.IntentFilter
+import android.content.BroadcastReceiver
 import android.os.Handler
 import android.os.HandlerThread
 import android.os.IBinder
@@ -78,6 +81,27 @@ class AxionFxService : Service() {
         }
     }
 
+    private val audioSessionReceiver = object : BroadcastReceiver() {
+        override fun onReceive(context: Context, intent: Intent) {
+            val action = intent.action ?: return
+            val sessionId = intent.getIntExtra(AudioEffect.EXTRA_AUDIO_SESSION, -1)
+            Log.d(TAG, "audioSessionReceiver onReceive: action=$action, sessionId=$sessionId")
+            if (sessionId <= 0) return
+
+            when (action) {
+                AudioEffect.ACTION_OPEN_AUDIO_EFFECT_CONTROL_SESSION -> {
+                    val attached = AxionFxController.attachSession(sessionId)
+                    if (attached) {
+                        restoreSettings()
+                    }
+                }
+                AudioEffect.ACTION_CLOSE_AUDIO_EFFECT_CONTROL_SESSION -> {
+                    AxionFxController.detachSession(sessionId)
+                }
+            }
+        }
+    }
+
     private val audioPlaybackCallback = object : AudioManager.AudioPlaybackCallback() {
         override fun onPlaybackConfigChanged(configs: MutableList<AudioPlaybackConfiguration>?) {
             scheduleRoutingEval()
@@ -85,6 +109,15 @@ class AxionFxService : Service() {
             if (isActive != lastPlaybackActive) {
                 lastPlaybackActive = isActive
                 onPlaybackActivityChanged(isActive)
+            }
+            configs?.forEach { config ->
+                val sessionId = config.sessionId
+                if (sessionId > 0) {
+                    val attached = AxionFxController.attachSession(sessionId)
+                    if (attached) {
+                        restoreSettings()
+                    }
+                }
             }
         }
     }
@@ -101,6 +134,24 @@ class AxionFxService : Service() {
         lastPlaybackActive = audioManager?.activePlaybackConfigurations?.isNotEmpty() == true
         _mediaPlaying.value = lastPlaybackActive
         if (lastPlaybackActive) heartbeatMonitor.onPlaybackStarted()
+
+        // Prime any already running sessions on boot
+        audioManager?.activePlaybackConfigurations?.forEach { config ->
+            val sessionId = config.sessionId
+            if (sessionId > 0) {
+                val attached = AxionFxController.attachSession(sessionId)
+                if (attached) {
+                    restoreSettings()
+                }
+            }
+        }
+
+        // Register dynamic audio session receiver to listen for open/close session actions
+        val filter = IntentFilter().apply {
+            addAction(AudioEffect.ACTION_OPEN_AUDIO_EFFECT_CONTROL_SESSION)
+            addAction(AudioEffect.ACTION_CLOSE_AUDIO_EFFECT_CONTROL_SESSION)
+        }
+        registerReceiver(audioSessionReceiver, filter, Context.RECEIVER_EXPORTED)
 
         serviceScope.launch {
             combine(_masterEnabled, _chainHealthyFlow) { enabled, healthy -> enabled to healthy }
@@ -130,7 +181,6 @@ class AxionFxService : Service() {
                 return START_NOT_STICKY
             }
         }
-        AxionFxController.attachSession(0)
         restoreSettings()
         return START_STICKY
     }
@@ -139,6 +189,9 @@ class AxionFxService : Service() {
 
     override fun onDestroy() {
         instance = null
+        try {
+            unregisterReceiver(audioSessionReceiver)
+        } catch (_: Exception) {}
         audioManager?.unregisterAudioDeviceCallback(deviceCallback)
         audioManager?.unregisterAudioPlaybackCallback(audioPlaybackCallback)
         routingHandler.removeCallbacks(evalRunnable)
