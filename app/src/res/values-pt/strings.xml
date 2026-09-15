@@ -21,7 +21,7 @@
     <string name="mode_media">Somente Mídia</string>
     <!-- Status -->
     <string name="status_active">Processamento Ativo</string>
-    <string name="status_detached">Enabled, not processing</string>
+    <string name="status_detached">Habilitado, sem processamento</string>
     <string name="status_disabled">Desativado</string>
     <string name="status_media_only">Modo Somente Mídia</string>
     <string name="status_effects_active">%1$d efeitos ativos \u2022 %2$d%% ganho</string>
@@ -227,7 +227,7 @@
     <string name="notification_text">Processamento de áudio ativo</string>
     <string name="notification_title_idle">AxionFx — Standby</string>
     <string name="notification_text_idle">Aguardando reprodução de mídia</string>
-    <string name="notification_text_not_processing">Audio processing inactive</string>
+    <string name="notification_text_not_processing">Processamento de áudio inativo</string>
     <!-- Power notice -->
     <string name="power_notice">O processamento de áudio usa uma CPU adicional durante a reprodução. Desative os efeitos não utilizados para conservar a bateria.</string>
     <string name="reset_dialog_title">Redefinir todos os efeitos?</string>
