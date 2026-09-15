@@ -33,6 +33,8 @@ object AxionFxController {
 
     fun getSessionId(): Int = sessions.keys.firstOrNull() ?: -1
 
+    fun getAttachedSessions(): Set<Int> = sessions.keys.toSet()
+
     fun attachSession(sessionId: Int): Boolean {
         if (sessions.containsKey(sessionId)) return true
         return try {

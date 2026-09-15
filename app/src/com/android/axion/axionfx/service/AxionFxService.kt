@@ -105,18 +105,27 @@ class AxionFxService : Service() {
     private val audioPlaybackCallback = object : AudioManager.AudioPlaybackCallback() {
         override fun onPlaybackConfigChanged(configs: MutableList<AudioPlaybackConfiguration>?) {
             scheduleRoutingEval()
-            val isActive = configs?.isNotEmpty() == true
+            val isActive = configs?.any { it.isActive } == true
             if (isActive != lastPlaybackActive) {
                 lastPlaybackActive = isActive
                 onPlaybackActivityChanged(isActive)
             }
-            configs?.forEach { config ->
-                val sessionId = config.sessionId
-                if (sessionId > 0) {
-                    val attached = AxionFxController.attachSession(sessionId)
-                    if (attached) {
-                        restoreSettings()
-                    }
+
+            val activeSessions = configs?.mapNotNull { config ->
+                if (config.isActive && config.sessionId > 0) config.sessionId else null
+            }?.toSet() ?: emptySet()
+
+            val currentlyAttached = AxionFxController.getAttachedSessions()
+            currentlyAttached.forEach { sessionId ->
+                if (sessionId !in activeSessions) {
+                    AxionFxController.detachSession(sessionId)
+                }
+            }
+
+            activeSessions.forEach { sessionId ->
+                val attached = AxionFxController.attachSession(sessionId)
+                if (attached) {
+                    restoreSettings()
                 }
             }
         }
@@ -131,18 +140,20 @@ class AxionFxService : Service() {
         _autoSwitchEnabled.value = prefs.getBoolean(KEY_AUTO_SWITCH, true)
         audioManager?.registerAudioDeviceCallback(deviceCallback, routingHandler)
         audioManager?.registerAudioPlaybackCallback(audioPlaybackCallback, Handler(Looper.getMainLooper()))
-        lastPlaybackActive = audioManager?.activePlaybackConfigurations?.isNotEmpty() == true
+        
+        val activeConfigs = audioManager?.activePlaybackConfigurations
+        lastPlaybackActive = activeConfigs?.any { it.isActive } == true
         _mediaPlaying.value = lastPlaybackActive
         if (lastPlaybackActive) heartbeatMonitor.onPlaybackStarted()
 
-        // Prime any already running sessions on boot
-        audioManager?.activePlaybackConfigurations?.forEach { config ->
-            val sessionId = config.sessionId
-            if (sessionId > 0) {
-                val attached = AxionFxController.attachSession(sessionId)
-                if (attached) {
-                    restoreSettings()
-                }
+        val activeSessions = activeConfigs?.mapNotNull { config ->
+            if (config.isActive && config.sessionId > 0) config.sessionId else null
+        }?.toSet() ?: emptySet()
+
+        activeSessions.forEach { sessionId ->
+            val attached = AxionFxController.attachSession(sessionId)
+            if (attached) {
+                restoreSettings()
             }
         }
 
