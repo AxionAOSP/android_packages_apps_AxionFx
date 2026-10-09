@@ -93,6 +93,7 @@ object AxionFxController {
     fun getHeartbeat() = getParameter(0x103);
 
     fun setMasterEnabled(enabled: Boolean) = setParameter(0x100, if (enabled) 1 else 0)
+    fun getMasterEnabled() = getParameter(0x100) == 1
     fun setOutputGain(percent: Int) = setParameter(0x101, percent)
 
     fun setEqEnabled(enabled: Boolean) = setParameter(0x200, if (enabled) 1 else 0)

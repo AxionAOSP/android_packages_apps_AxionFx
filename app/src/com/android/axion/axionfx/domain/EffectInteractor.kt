@@ -26,6 +26,10 @@ class EffectInteractor(private val repo: EffectRepository) {
         AxionFxController.setMasterEnabled(enabled)
     }
 
+    fun getMasterEnabled(): Boolean {
+       return AxionFxController.getMasterEnabled()
+    }
+
     fun setOutputGain(value: Int) {
         repo.putInt(EffectKeys.OUTPUT_GAIN, value)
         AxionFxController.setOutputGain(value)

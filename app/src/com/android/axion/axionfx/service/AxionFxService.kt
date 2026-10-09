@@ -184,7 +184,7 @@ class AxionFxService : Service() {
         }
         val applied = DeviceProfileManager.applyBinding(this, prefs, profile)
         if (applied) {
-            restoreSettings()
+            if (AxionFxController.getMasterEnabled()) restoreSettings()
             lastAppliedCategory = routed.category
             _appliedPresetName.value = DeviceProfileManager.displayName(token)
             Log.d(TAG, "Auto-switched profile for ${routed.category}")
