@@ -123,8 +123,8 @@
     <string name="eq_arbitrary_mode">Произвольный EQ</string>
     <string name="eq_arbitrary_title">Arbitrary Response EQ</string>
     <string name="eq_arbitrary_summary">Draw a 39-node magnitude response, or import an AutoEQ file as a starting point</string>
-    <string name="eq_magnitude_response">Magnitude Response</string>
-    <string name="eq_db_unit">dB</string>
+    <string name="eq_magnitude_response">Амплитудная характеристика</string>
+    <string name="eq_db_unit">дБ</string>
     <string name="eq_reset">Сброс</string>
     <string name="eq_smooth_curve">Smooth Curve</string>
     <string name="eq_preset_flat">Flat</string>
@@ -136,14 +136,14 @@
     <string name="eq_label_bass">Bass</string>
     <string name="eq_label_mid">Mid</string>
     <string name="eq_label_treble">Treble</string>
-    <string name="eq_autoeq_import_title">Import AutoEQ File</string>
+    <string name="eq_autoeq_import_title">Импорт файла AutoEQ</string>
     <string name="eq_autoeq_import_summary">Optional: load GraphicEQ or ParametricEQ text into the editable AutoEQ graph</string>
-    <string name="eq_autoeq_import_success">AutoEQ imported</string>
-    <string name="eq_autoeq_import_failed">Unsupported AutoEQ file</string>
+    <string name="eq_autoeq_import_success">AutoEQ импортирован</string>
+    <string name="eq_autoeq_import_failed">Неподдерживаемый AutoEQ файл</string>
     <!-- FIR EQ screen -->
     <string name="fir_eq_screen_title">FIR эквалайзер</string>
     <string name="fir_eq_category">Phase-Linear EQ</string>
-    <string name="fir_eq_enable_title">Enable FIR Equalizer</string>
+    <string name="fir_eq_enable_title">Включить FIR эквалайзер</string>
     <string name="fir_eq_enable_summary">15-полосный фазовый эквалайзер</string>
     <string name="fir_eq_flat">Flat</string>
     <string name="fir_eq_plus_db">+20 dB</string>
@@ -151,12 +151,12 @@
     <!-- Multiband screen -->
     <string name="mcomp_screen_title">Мультиполосный компрессор</string>
     <string name="mcomp_category">Мультиполосный компрессор</string>
-    <string name="mcomp_enable_title">Enable Multiband Compressor</string>
+    <string name="mcomp_enable_title">Мультиполосный компрессор</string>
     <string name="mcomp_enable_summary">Управление динамическим диапазоном</string>
-    <string name="mcomp_threshold_title">Threshold</string>
-    <string name="mcomp_threshold_summary">Compression onset level</string>
-    <string name="mcomp_ratio_title">Ratio</string>
-    <string name="mcomp_ratio_summary">Compression ratio</string>
+    <string name="mcomp_threshold_title">Пороговое значение</string>
+    <string name="mcomp_threshold_summary">Уровень сжатия</string>
+    <string name="mcomp_ratio_title">Процент</string>
+    <string name="mcomp_ratio_summary">Степень сжатия</string>
     <string name="mcomp_makeup_title">Makeup Gain</string>
     <string name="mcomp_makeup_summary">Post-compression gain</string>
     <string name="mcomp_band_low">Низкий</string>
