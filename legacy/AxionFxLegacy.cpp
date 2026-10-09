@@ -97,7 +97,6 @@ static int axfx_command(effect_handle_t self, uint32_t cmdCode, uint32_t cmdSize
 
         case EFFECT_CMD_ENABLE:
             ctx->enabled = true;
-            ctx->engine.setMasterEnabled(true);
             if (replySize && *replySize >= sizeof(int32_t) && pReplyData) {
                 *static_cast<int32_t *>(pReplyData) = 0;
             }
