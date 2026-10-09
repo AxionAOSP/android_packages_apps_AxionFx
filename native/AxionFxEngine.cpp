@@ -60,13 +60,14 @@ void AxionFxEngine::configure(float sampleRate) {
 }
 
 void AxionFxEngine::process(float* in, float* out, int samples) {
-    mProcessCallCount.fetch_add(1, std::memory_order_relaxed);
     if (!mMasterEnabled) {
         if (in != out) {
             std::memcpy(out, in, samples * sizeof(float));
         }
         return;
     }
+
+    mProcessCallCount.fetch_add(1, std::memory_order_relaxed);
 
     if (in != out) {
         std::memcpy(out, in, samples * sizeof(float));
