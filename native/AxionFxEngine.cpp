@@ -122,6 +122,9 @@ void AxionFxEngine::setParameter(int32_t paramId, int32_t value) {
         case PARAM_OUTPUT_GAIN:
             mOutputGain = static_cast<float>(value) / 100.0f;
             break;
+        case PARAM_SERVICE_READY:
+            mServiceReady = (value != 0);
+            break;
         case PARAM_OUTPUT_PAN: {
             float pan = static_cast<float>(value) / 100.0f;
             pan = std::clamp(pan, -1.0f, 1.0f);

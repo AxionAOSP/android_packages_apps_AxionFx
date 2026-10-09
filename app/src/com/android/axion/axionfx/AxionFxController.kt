@@ -95,6 +95,7 @@ object AxionFxController {
     fun setMasterEnabled(enabled: Boolean) = setParameter(0x100, if (enabled) 1 else 0)
     fun getMasterEnabled() = getParameter(0x100) == 1
     fun setOutputGain(percent: Int) = setParameter(0x101, percent)
+    fun setServiceReady(isReady: Boolean) = setParameter(0x104, if (isReady) 1 else 0)
 
     fun setEqEnabled(enabled: Boolean) = setParameter(0x200, if (enabled) 1 else 0)
     fun setEqBandLevel(band: Int, levelCentibels: Int) =

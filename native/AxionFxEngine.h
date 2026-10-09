@@ -45,6 +45,7 @@ public:
     int32_t getParameter(int32_t paramId) const;
 
     void setMasterEnabled(bool enabled);
+    bool isServiceReady() const { return mServiceReady; }
     bool isMasterEnabled() const { return mMasterEnabled; }
     bool loadIrFromPath(const char* path);
     bool loadIrFromFd(int fd, int64_t offset, int64_t length);
@@ -52,6 +53,7 @@ public:
 
 private:
     std::atomic<uint64_t> mProcessCallCount{0};
+    bool mServiceReady = false;
     bool mMasterEnabled = false;
     float mSampleRate = 48000.0f;
     float mOutputGain = 1.0f;
