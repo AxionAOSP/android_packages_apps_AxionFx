@@ -60,13 +60,14 @@ void AxionFxEngine::configure(float sampleRate) {
 }
 
 void AxionFxEngine::process(float* in, float* out, int samples) {
-    mProcessCallCount.fetch_add(1, std::memory_order_relaxed);
     if (!mMasterEnabled) {
         if (in != out) {
             std::memcpy(out, in, samples * sizeof(float));
         }
         return;
     }
+
+    mProcessCallCount.fetch_add(1, std::memory_order_relaxed);
 
     if (in != out) {
         std::memcpy(out, in, samples * sizeof(float));
@@ -120,6 +121,9 @@ void AxionFxEngine::setParameter(int32_t paramId, int32_t value) {
             break;
         case PARAM_OUTPUT_GAIN:
             mOutputGain = static_cast<float>(value) / 100.0f;
+            break;
+        case PARAM_SERVICE_READY:
+            mServiceReady = (value != 0);
             break;
         case PARAM_OUTPUT_PAN: {
             float pan = static_cast<float>(value) / 100.0f;

@@ -125,6 +125,7 @@ class AxionFxService : Service() {
         when (intent?.action) {
             ACTION_STOP -> {
                 AxionFxController.setMasterEnabled(false)
+                AxionFxController.setServiceReady(false)
                 stopForeground(STOP_FOREGROUND_REMOVE)
                 stopSelf()
                 return START_NOT_STICKY
@@ -184,7 +185,7 @@ class AxionFxService : Service() {
         }
         val applied = DeviceProfileManager.applyBinding(this, prefs, profile)
         if (applied) {
-            restoreSettings()
+            if (AxionFxController.getMasterEnabled()) restoreSettings()
             lastAppliedCategory = routed.category
             _appliedPresetName.value = DeviceProfileManager.displayName(token)
             Log.d(TAG, "Auto-switched profile for ${routed.category}")
@@ -388,8 +389,9 @@ class AxionFxService : Service() {
         private val _chainHealthyFlow = MutableStateFlow(true)
         val chainHealthyFlow: StateFlow<Boolean> = _chainHealthyFlow.asStateFlow()
 
-        internal fun updateMasterEnabledFlow(enabled: Boolean) {
+        fun updateMasterEnabledFlow(enabled: Boolean) {
             _masterEnabled.value = enabled
+            AxionFxController.setServiceReady(enabled);
         }
 
         fun primeFromContext(context: Context) {
