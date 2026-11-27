@@ -108,7 +108,7 @@
     <string name="reverb_wet_summary">Баланс реверберации</string>
     <string name="tube_title">Эмулятор лампового усилителя</string>
     <string name="tube_summary">Теплый аналоговый окрас</string>
-    <string name="tube_drive_title">Drive</string>
+    <string name="tube_drive_title">Диск</string>
     <string name="tube_drive_summary">Интенсивность сатурации</string>
     <string name="tube_mix_title">Микс</string>
     <string name="tube_mix_summary">Баланс обработанного и чистого сигнала</string>
@@ -128,15 +128,15 @@
     <string name="eq_db_unit">дБ</string>
     <string name="eq_reset">Сброс</string>
     <string name="eq_smooth_curve">Сглаживание кривой</string>
-    <string name="eq_preset_flat">Flat</string>
+    <string name="eq_preset_flat">Плоскость</string>
     <string name="eq_preset_bass_boost">Усиление басов</string>
     <string name="eq_preset_treble_boost">Усиление высоких частот</string>
     <string name="eq_preset_voice">Голос</string>
-    <string name="eq_preset_v_shape">V-Shape</string>
-    <string name="eq_preset_rock">Rock</string>
+    <string name="eq_preset_v_shape">V-Формы</string>
+    <string name="eq_preset_rock">Скала</string>
     <string name="eq_label_bass">Басс</string>
-    <string name="eq_label_mid">Mid</string>
-    <string name="eq_label_treble">Treble</string>
+    <string name="eq_label_mid">Центр</string>
+    <string name="eq_label_treble">Высокие частоты</string>
     <string name="eq_autoeq_import_title">Импорт файла AutoEQ</string>
     <string name="eq_autoeq_import_summary">Необязательно: загрузите текст GraphicEQ или ParametricEQ в редактируемый график AutoEQ</string>
     <string name="eq_autoeq_import_success">AutoEQ импортирован</string>
@@ -146,7 +146,7 @@
     <string name="fir_eq_category">Линейно-фазовый эквалайзер</string>
     <string name="fir_eq_enable_title">Включить FIR эквалайзер</string>
     <string name="fir_eq_enable_summary">15-полосный фазовый эквалайзер</string>
-    <string name="fir_eq_flat">Flat</string>
+    <string name="fir_eq_flat">Плоскость</string>
     <string name="fir_eq_plus_db">+20 дБ</string>
     <string name="fir_eq_minus_db">-20 дБ</string>
     <!-- Multiband screen -->
@@ -173,7 +173,7 @@
     <string name="exciter_category">Гармонический эксайтер</string>
     <string name="exciter_enable_title">Включить эксайтер</string>
     <string name="exciter_enable_summary">Добавьте гармоническое присутствие и чистоту</string>
-    <string name="exciter_drive_title">Drive</string>
+    <string name="exciter_drive_title">Диск</string>
     <string name="exciter_drive_summary">Интенсивность гармонической сатурации</string>
     <string name="exciter_blend_title">Смешивание</string>
     <string name="exciter_blend_summary">Уровень смешивания гармоник</string>
@@ -187,7 +187,7 @@
     <string name="convolver_load_ir">Загрузить IR файл</string>
     <string name="convolver_no_ir">импульс не загружен</string>
     <string name="convolver_mix_title">Микс</string>
-    <string name="convolver_mix_summary">Wet/dry balance</string>
+    <string name="convolver_mix_summary">Баланс влажности/сухости</string>
     <string name="convolver_formats">Поддерживаемые форматы: WAV (16/24/32-битный PCM, 32-bit float)</string>
     <!-- Presets screen -->
     <string name="presets_screen_title">Предустановки звуков</string>
